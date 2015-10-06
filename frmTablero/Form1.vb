@@ -48,7 +48,7 @@
     End Sub
 
     Private Sub posicionarReina(sender As Object, e As EventArgs)
-        sender.Load(Application.StartupPath & ("/images/reina.png"))
+        sender.Load(Application.StartupPath & ("/images/reyN.png"))
         MsgBox(sender.name)
     End Sub
 
@@ -56,31 +56,67 @@
         For y = 0 To 7
             If nCasillas(fila, y) = 1 Then
                 Return 1
-            Else
-                Return 0
             End If
         Next
+        Return 0
     End Function
 
     Private Function comprobarColumna(ByVal columna As Integer) As Integer
         For x = 0 To 7
             If nCasillas(x, columna) = 1 Then
                 Return 1
-            Else
-                Return 0
             End If
         Next
+        Return 0
     End Function
 
-    Private Function comprobarDiagIzq()
+    Private Function comprobarDiagIzq(ByVal fila As Integer, ByVal columna As Integer)
+        'diagonal hacia abajo
+        For i = 0 To 7
+            If (fila >= 0 And fila < 7) And (columna >= 0 And columna < 7) Then
+                columna += 1
+                fila += 1
+                If nCasillas(fila, columna) = 1 Then
+                    Return 1
+                End If
+            End If
+        Next
 
-
+        'diagonal hacia arriba
+        For i = 0 To 7
+            If (fila > 0 And fila <= 7) And (columna > 0 And columna <= 7) Then
+                columna -= 1
+                fila -= 1
+                If (nCasillas(fila, columna) = 1) Then
+                    Return 1
+                End If
+            End If
+        Next
+        Return 0
     End Function
 
-    Private Function comprobarDiagDrch()
+    Private Function comprobarDiagDrch(ByVal fila As Integer, ByVal columna As Integer)
+        'diagonal hacia arriba
+        For i = 0 To 7
+            If (fila >= 0 And fila < 7) And (columna > 0 And columna <= 7) Then
+                columna -= 1
+                fila += 1
+                If nCasillas(fila, columna) = 1 Then
+                    Return 1
+                End If
+            End If
+        Next
 
+        'diagonal hacia abajo
+        For i = 0 To 7
+            If (fila > 0 And fila <= 7) And (columna >= 0 And columna < 7) Then
+                columna += 1
+                fila -= 1
+                If nCasillas(fila, columna) = 1 Then
+                    Return 1
+                End If
+            End If
+        Next
+        Return 0
     End Function
-
-
-
 End Class
