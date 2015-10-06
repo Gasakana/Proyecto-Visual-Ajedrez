@@ -1,0 +1,11 @@
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\frmTablero.exe.config
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\frmTablero.exe
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\frmTablero.pdb
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\frmTablero.xml
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.vbprojResolveAssemblyReference.cache
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.Form1.resources
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.Resources.resources
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.vbproj.GenerateResource.Cache
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.exe
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.xml
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.pdb
