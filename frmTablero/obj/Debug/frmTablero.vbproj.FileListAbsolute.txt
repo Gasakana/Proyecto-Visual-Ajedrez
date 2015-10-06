@@ -9,3 +9,14 @@ C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\
 C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.exe
 C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.xml
 C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.pdb
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.vbprojResolveAssemblyReference.cache
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\frmTablero.vbproj.GenerateResource.Cache
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.exe.config
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.exe
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.pdb
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.xml
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.Form1.resources
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.Resources.resources
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.exe
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.xml
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.pdb

@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D77B3B2C-035E-4061-B62B-E157C824B7B5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>frmTablero.My.MyApplication</StartupObject>
-    <RootNamespace>frmTablero</RootNamespace>
-    <AssemblyName>frmTablero</AssemblyName>
+    <StartupObject>Ajedrez.My.MyApplication</StartupObject>
+    <RootNamespace>Ajedrez</RootNamespace>
+    <AssemblyName>Ajedrez</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>frmTablero.xml</DocumentationFile>
+    <DocumentationFile>Ajedrez.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>frmTablero.xml</DocumentationFile>
+    <DocumentationFile>Ajedrez.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -94,6 +94,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Piezas\Alfil.vb" />
+    <Compile Include="Piezas\Caballo.vb" />
+    <Compile Include="Piezas\Peon.vb" />
+    <Compile Include="Piezas\Reina.vb" />
+    <Compile Include="Piezas\Rey.vb" />
+    <Compile Include="Piezas\Torre.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
