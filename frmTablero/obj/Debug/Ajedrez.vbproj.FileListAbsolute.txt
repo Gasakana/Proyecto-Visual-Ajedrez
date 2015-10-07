@@ -11,3 +11,14 @@ C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedr
 C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.exe.config
 C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.exe
 C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.xml
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.exe.config
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.exe
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.xml
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.exe
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.pdb
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.xml
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.vbprojResolveAssemblyReference.cache
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmTablero.resources
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.Resources.resources
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.vbproj.GenerateResource.Cache
+C:\Users\Eduardo\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.pdb

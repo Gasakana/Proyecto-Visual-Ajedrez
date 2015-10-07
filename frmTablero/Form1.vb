@@ -1,6 +1,7 @@
 ﻿Public Class frmTablero
     Dim nCasillas(7, 7) As Integer
 
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim casillasPB(7, 7) As PictureBox
 
@@ -40,17 +41,112 @@
                         End If
                     End If
 
+                    If columnas = 6 Then
+                        casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonB.png"))
+                        nCasillas(filas, columnas) = 11
+                    End If
+
+                    If columnas = 1 Then
+                        casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonN.png"))
+                        nCasillas(filas, columnas) = 21
+                    End If
+
+                    If columnas = 0 Then
+                        If filas = 0 Or filas = 7 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/TorreN.png"))
+                            nCasillas(filas, columnas) = 22
+                        End If
+
+                        If filas = 1 Or filas = 6 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/caballoN.png"))
+                            nCasillas(filas, columnas) = 23
+                        End If
+
+                        If filas = 2 Or filas = 5 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/alfilN.png"))
+                            nCasillas(filas, columnas) = 24
+                        End If
+
+                        If filas = 3 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reinaN.png"))
+                            nCasillas(filas, columnas) = 25
+                        End If
+
+                        If filas = 4 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyN.png"))
+                            nCasillas(filas, columnas) = 26
+                        End If
+
+                    End If
+
+                    If columnas = 7 Then
+                        If filas = 0 Or filas = 7 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/TorreB.png"))
+                            nCasillas(filas, columnas) = 12
+                        End If
+
+                        If filas = 1 Or filas = 6 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/caballoB.png"))
+                            nCasillas(filas, columnas) = 13
+                        End If
+
+                        If filas = 2 Or filas = 5 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/alfilB.png"))
+                            nCasillas(filas, columnas) = 14
+                        End If
+
+                        If filas = 3 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reinaB.png"))
+                            nCasillas(filas, columnas) = 15
+                        End If
+
+                        If filas = 4 Then
+                            casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyB.png"))
+                            nCasillas(filas, columnas) = 16
+                        End If
+
+                    End If
                     Me.Controls.Add(pb)
-                    AddHandler pb.MouseClick, AddressOf posicionarReina
+                    AddHandler pb.MouseClick, AddressOf moverFicha
                 End With
             Next
         Next
     End Sub
 
-    Private Sub posicionarReina(sender As Object, e As EventArgs)
-        sender.Load(Application.StartupPath & ("/images/reyN.png"))
+    Private Sub moverFicha(sender As Object, e As EventArgs)
+        Dim final As String
+        Dim ncolumna, nfila, ncolumnafinal, nfilafinal As Integer
         MsgBox(sender.name)
+        ncolumna = CInt(sender.name.ToString.Substring(0, 1))
+        nfila = CInt(sender.name.ToString.Substring(1, 1))
+        If nCasillas(ncolumna, nfila) = 0 Then
+            MsgBox("no puedes hacer nada")
+        Else
+            MsgBox("funciona")
+            If nCasillas(ncolumna, nfila) = 12 Then
+                Dim torre As New Torre
+
+                While (True)
+                    final = posicionarFicha(sender, e)
+                    ncolumnafinal = CInt(final.Substring(0, 1))
+                    nfilafinal = CInt(final.Substring(1, 1))
+                    Exit While
+
+
+                End While
+                MsgBox(ncolumnafinal & nfilafinal)
+                'torre.mover(nCasillas, nfila, ncolumna, )
+
+            End If
+        End If
+
     End Sub
+
+    Private Function posicionarFicha(sender As Object, e As EventArgs)
+        Dim ncolumna, nfila As Integer
+        Return sender.name
+
+    End Function
 
     Private Function comprobarFila(ByVal fila As Integer) As Integer
         For y = 0 To 7
