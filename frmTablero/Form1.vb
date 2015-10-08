@@ -1,5 +1,7 @@
 ﻿Public Class frmTablero
     Dim nCasillas(7, 7) As Integer
+    Dim comprueba As Boolean
+    Dim ncolumna, nfila, ncolumnafinal, nfilafinal As Integer
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -114,39 +116,39 @@
     End Sub
 
     Private Sub moverFicha(sender As Object, e As EventArgs)
-        Dim final As String
-        Dim ncolumna, nfila, ncolumnafinal, nfilafinal As Integer
-        MsgBox(sender.name)
-        ncolumna = CInt(sender.name.ToString.Substring(0, 1))
-        nfila = CInt(sender.name.ToString.Substring(1, 1))
-        If nCasillas(ncolumna, nfila) = 0 Then
-            MsgBox("no puedes hacer nada")
+
+
+        If (comprueba) Then 'usando este bolean utilizamos el mismo metodo para la inicial y la final
+            Dim torre As New Torre
+
+            ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1))
+            nfilafinal = CInt(sender.name.ToString.Substring(1, 1))
+            MsgBox(ncolumnafinal & nfilafinal & "segundo")
+            MsgBox(torre.mover(nCasillas, nfila, ncolumna, nfilafinal, ncolumnafinal))
+
+            comprueba = False
         Else
-            MsgBox("funciona")
-            If nCasillas(ncolumna, nfila) = 12 Then
-                Dim torre As New Torre
+            MsgBox(sender.name)
+            ncolumna = CInt(sender.name.ToString.Substring(0, 1))
+            nfila = CInt(sender.name.ToString.Substring(1, 1))
+            If nCasillas(ncolumna, nfila) = 0 Then
+                MsgBox("no puedes hacer nada")
+            Else
+                MsgBox("funciona")
+                If nCasillas(ncolumna, nfila) = 11 Then 'se lo he asignado al peon para mejor comprobacion
+                    comprueba = True
 
-                While (True)
-                    final = posicionarFicha(sender, e)
-                    ncolumnafinal = CInt(final.Substring(0, 1))
-                    nfilafinal = CInt(final.Substring(1, 1))
-                    Exit While
 
 
-                End While
-                MsgBox(ncolumnafinal & nfilafinal)
-                'torre.mover(nCasillas, nfila, ncolumna, )
 
+
+
+                End If
             End If
         End If
 
     End Sub
 
-    Private Function posicionarFicha(sender As Object, e As EventArgs)
-        Dim ncolumna, nfila As Integer
-        Return sender.name
-
-    End Function
 
     Private Function comprobarFila(ByVal fila As Integer) As Integer
         For y = 0 To 7
