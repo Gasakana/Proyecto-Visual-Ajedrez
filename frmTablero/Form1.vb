@@ -4,17 +4,17 @@
 
     Dim nCasillas(7, 7) As Integer 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
     Dim comprueba As Boolean 'Booleano que comprueba la casilla inicial y la casilla final en la que se encuentra la pieza seleccionada
-    Dim ncolumna, nfila, ncolumnafinal, nfilafinal As Integer 'Variables donde se guarda el valor de la fila inicial/final y columna inicial/final
+    Dim ncolumnainicial, nfilainicial, ncolumnafinal, nfilafinal As Integer 'Variables donde se guarda el valor de la fila inicial/final y columna inicial/final
+    Dim casillasPB(7, 7) As PictureBox 'Matriz de 8 x 8 de tipo PictureBox para colocar las casillas del tablero
 
     'Metodos/Eventos
 
     'Evento Load: Al cargar el formulario aparece el tablero de ajedrez coloreado 
     'y con las piezas de ambos jugadores colocadas
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'Variables locales
 
-        Dim casillasPB(7, 7) As PictureBox 'Matriz de 8 x 8 de tipo PictureBox para colocar las casillas del tablero
         Dim filas As Integer 'Variable de tipo Integer, el cual se usa para crear el número de filas del tablero
         Dim columnas As Integer 'Variable de tipo Integer, el cual se usa para crear el número de columnas del tablero 
 
@@ -101,7 +101,6 @@
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyN.png"))
                             nCasillas(filas, columnas) = 26
                         End If
-
                     End If
 
                     If columnas = 7 Then
@@ -135,7 +134,6 @@
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyB.png"))
                             nCasillas(filas, columnas) = 16
                         End If
-
                     End If
 
                     'Añadimos los controles de PictureBox en el formulario 
@@ -151,25 +149,42 @@
     Private Sub moverFicha(sender As Object, e As EventArgs)
 
 
-        If (comprueba) Then 'usando este bolean utilizamos el mismo metodo para la inicial y la final
+        If (comprueba) Then 'usando este boolean utilizamos el mismo metodo para la inicial y la final
             Dim torre As New Torre
-
+            Dim movimiento As Integer
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
             MsgBox(ncolumnafinal & nfilafinal & "segundo")
-            MsgBox(torre.mover(nCasillas, nfila, ncolumna, nfilafinal, ncolumnafinal))
+            movimiento = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+            MsgBox(movimiento)
+            If movimiento = 0 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = 11 Then
+                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonB.png"))
+                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                    nCasillas(ncolumnainicial, nfilainicial) = 0
+                    nCasillas(ncolumnafinal, nfilafinal) = 11
+
+                End If
+
+            End If
+
 
             comprueba = False 'se restablece comprobar a false para el siguiente uso
         Else
             MsgBox(sender.name)
-            ncolumna = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna actual donde esta colocada la la pieza
-            nfila = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila actual donde esta colocada la pieza
-            If nCasillas(ncolumna, nfila) = 0 Then 'si la casilla está vacia....
+            ncolumnainicial = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna actual donde esta colocada la pieza
+            nfilainicial = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila actual donde esta colocada la pieza
+            If nCasillas(ncolumnainicial, nfilainicial) = 0 Then 'si la casilla está vacia...
                 MsgBox("no puedes hacer nada")
             Else
                 MsgBox("funciona")
-                If nCasillas(ncolumna, nfila) = 11 Then 'se lo he asignado al peon para mejor comprobacion
+                If nCasillas(ncolumnainicial, nfilainicial) = 11 Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
+
+
+
+
+
 
                 End If
             End If
