@@ -151,18 +151,33 @@
 
         If (comprueba) Then 'usando este boolean utilizamos el mismo metodo para la inicial y la final
             Dim torre As New Torre
-            Dim movimiento As Integer
+            Dim alfil As New Alfil
+            Dim movimientoTorre As Integer
+            Dim movimientoAlfil As Integer
+
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
             MsgBox(ncolumnafinal & nfilafinal & "segundo")
-            movimiento = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
-            MsgBox(movimiento)
-            If movimiento = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = 11 Then
+            movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+            movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+            MsgBox(movimientoAlfil)
+            If movimientoTorre = 0 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = 12 Then
                     casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonB.png"))
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                     nCasillas(ncolumnainicial, nfilainicial) = 0
-                    nCasillas(ncolumnafinal, nfilafinal) = 11
+                    nCasillas(ncolumnafinal, nfilafinal) = 12
+
+                End If
+            End If
+
+
+            If movimientoAlfil = 0 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = 21 Then
+                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonN.png"))
+                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                    nCasillas(ncolumnainicial, nfilainicial) = 0
+                    nCasillas(ncolumnafinal, nfilafinal) = 21
 
                 End If
 
@@ -178,18 +193,15 @@
                 MsgBox("no puedes hacer nada")
             Else
                 MsgBox("funciona")
-                If nCasillas(ncolumnainicial, nfilainicial) = 11 Then 'se lo he asignado al peon para mejor comprobacion
+                If nCasillas(ncolumnainicial, nfilainicial) = 12 Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
-
-
-
-
-
-
                 End If
+                If nCasillas(ncolumnainicial, nfilainicial) = 21 Then 'se lo he asignado al peon para mejor comprobacion
+                    comprueba = True
+                End If
+
             End If
         End If
-
     End Sub
 
 
