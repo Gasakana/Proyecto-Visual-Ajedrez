@@ -1,12 +1,8 @@
 ﻿Public Class Torre
 
-
-    Public Sub Torre()
-
-    End Sub
-
     Public Function mover(ByVal nCasillas(,) As Integer, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
                           ByVal filaFinal As Integer, ByVal columnaFinal As Integer)
+
         If filaInicial <> filaFinal And columnaInicial <> columnaFinal Then
             Return 1
         End If
@@ -15,44 +11,43 @@
             Return 1
         End If
 
+        'Es horizontal
         If filaInicial = filaFinal Then
+            ' --------->
             If columnaFinal > columnaInicial Then
-                For y = columnaFinal To columnaInicial Step -1
+                For y = columnaInicial + 1 To columnaFinal
                     If nCasillas(y, filaInicial) <> 0 Then
                         Return 1
-                    Else
-                        Return 0
                     End If
                 Next
+                '<----------
             ElseIf columnaFinal < columnaInicial
-                For y = columnaFinal To columnaInicial
+                For y = columnaFinal To columnaInicial - 1
                     If nCasillas(y, filaInicial) <> 0 Then
                         Return 1
-                    Else
-                        Return 0
                     End If
                 Next
             End If
         End If
 
+        'Vertical
         If columnaInicial = columnaFinal Then
+            ' abajo
             If filaFinal > filaInicial Then
-                For x = filaFinal To filaInicial Step -1
+                For x = filaInicial + 1 To filaFinal
                     If nCasillas(columnaInicial, x) <> 0 Then
                         Return 1
-                    Else
-                        Return 0
                     End If
                 Next
+                'arriba
             ElseIf filaFinal < filaInicial
-                For x = filaFinal To filaInicial
+                For x = filaFinal To filaInicial-1
                     If nCasillas(columnaInicial, x) <> 0 Then
                         Return 1
-                    Else
-                        Return 0
                     End If
                 Next
             End If
+            Return 0
         End If
 
     End Function
