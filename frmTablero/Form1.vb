@@ -160,7 +160,7 @@
             MsgBox(ncolumnafinal & nfilafinal & "segundo")
             movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
-            MsgBox(movimientoAlfil)
+            'MsgBox(movimientoAlfil)
             If movimientoTorre = 0 Then
                 If nCasillas(ncolumnainicial, nfilainicial) = 12 Then
                     casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonB.png"))
