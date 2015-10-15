@@ -153,16 +153,21 @@
             Dim torre As New Torre
             Dim alfil As New Alfil
             Dim reina As New Reina
+            Dim rey As New Rey
+
             Dim movimientoTorre As Integer
             Dim movimientoAlfil As Integer
             Dim movimientoReina As Integer
+            Dim movimientoRey As Integer
 
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
             MsgBox(ncolumnafinal & nfilafinal & "segundo")
+
             movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+            movimientoRey = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             'MsgBox(movimientoAlfil)
             If movimientoTorre = 0 Then
                 If nCasillas(ncolumnainicial, nfilainicial) = 12 Then
@@ -170,6 +175,16 @@
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                     nCasillas(ncolumnainicial, nfilainicial) = 0
                     nCasillas(ncolumnafinal, nfilafinal) = 12
+
+                End If
+            End If
+
+            If movimientoRey = 0 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = 16 Then
+                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
+                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                    nCasillas(ncolumnainicial, nfilainicial) = 0
+                    nCasillas(ncolumnafinal, nfilafinal) = 16
 
                 End If
             End If
@@ -216,76 +231,12 @@
                     comprueba = True
                 End If
 
+                If nCasillas(ncolumnainicial, nfilainicial) = 16 Then 'se lo he asignado al peon para mejor comprobacion
+                    comprueba = True
+                End If
+
             End If
         End If
     End Sub
 
-
-    Private Function comprobarFila(ByVal fila As Integer) As Integer
-        For y = 0 To 7
-            If nCasillas(fila, y) = 1 Then
-                Return 1
-            End If
-        Next
-        Return 0
-    End Function
-
-    Private Function comprobarColumna(ByVal columna As Integer) As Integer
-        For x = 0 To 7
-            If nCasillas(x, columna) = 1 Then
-                Return 1
-            End If
-        Next
-        Return 0
-    End Function
-
-    Private Function comprobarDiagIzq(ByVal fila As Integer, ByVal columna As Integer)
-        'diagonal hacia abajo
-        For i = 0 To 7
-            If (fila >= 0 And fila < 7) And (columna >= 0 And columna < 7) Then
-                columna += 1
-                fila += 1
-                If nCasillas(fila, columna) = 1 Then
-                    Return 1
-                End If
-            End If
-        Next
-
-        'diagonal hacia arriba
-        For i = 0 To 7
-            If (fila > 0 And fila <= 7) And (columna > 0 And columna <= 7) Then
-                columna -= 1
-                fila -= 1
-                If (nCasillas(fila, columna) = 1) Then
-                    Return 1
-                End If
-            End If
-        Next
-        Return 0
-    End Function
-
-    Private Function comprobarDiagDrch(ByVal fila As Integer, ByVal columna As Integer)
-        'diagonal hacia arriba
-        For i = 0 To 7
-            If (fila >= 0 And fila < 7) And (columna > 0 And columna <= 7) Then
-                columna -= 1
-                fila += 1
-                If nCasillas(fila, columna) = 1 Then
-                    Return 1
-                End If
-            End If
-        Next
-
-        'diagonal hacia abajo
-        For i = 0 To 7
-            If (fila > 0 And fila <= 7) And (columna >= 0 And columna < 7) Then
-                columna += 1
-                fila -= 1
-                If nCasillas(fila, columna) = 1 Then
-                    Return 1
-                End If
-            End If
-        Next
-        Return 0
-    End Function
 End Class
