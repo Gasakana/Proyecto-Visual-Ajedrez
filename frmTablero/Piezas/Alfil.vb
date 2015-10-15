@@ -1,15 +1,7 @@
 ﻿Public Class Alfil
     Dim retorno As Integer = 1
-    Public Function mover(ByVal nCasillas(,) As Integer, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
+    Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
                           ByVal filaFinal As Integer, ByVal columnaFinal As Integer)
-
-        'If columnaInicial = columnaFinal And filaInicial = filaFinal Then
-        '    Return 1
-        'End If
-
-        'If filaFinal = filaInicial Or columnaFinal = columnaInicial Then
-        '    Return 1
-        'End If
 
         'Diagonal derecha hacia abajo
         If filaInicial < filaFinal And columnaInicial < columnaFinal Then
@@ -61,7 +53,7 @@
             While (filaInicial <> filaFinal And columnaInicial <> columnaFinal)
                 filaInicial -= 1
                 columnaInicial += 1
-                If nCasillas(columnaInicial, filaInicial) <> 0 Then
+                If nCasillas(columnaInicial, filaInicial) <> "" Then
                     Return 1
                 End If
                 If columnaInicial = columnaFinal And filaInicial = filaFinal Then

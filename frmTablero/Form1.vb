@@ -2,7 +2,7 @@
 
     'Variables globales
 
-    Dim nCasillas(7, 7) As Integer 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
+    Dim nCasillas(7, 7) As String 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
     Dim comprueba As Boolean 'Booleano que comprueba la casilla inicial y la casilla final en la que se encuentra la pieza seleccionada
     Dim ncolumnainicial, nfilainicial, ncolumnafinal, nfilafinal As Integer 'Variables donde se guarda el valor de la fila inicial/final y columna inicial/final
     Dim casillasPB(7, 7) As PictureBox 'Matriz de 8 x 8 de tipo PictureBox para colocar las casillas del tablero
@@ -61,13 +61,13 @@
                     'Colocamos y asignamos la identificación de los peones blancos
                     If columnas = 6 Then
                         casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonB.png"))
-                        nCasillas(filas, columnas) = 11
+                        nCasillas(filas, columnas) = "bp"
                     End If
 
                     'Colocamos y asignamos la identificación de los peones negros
                     If columnas = 1 Then
                         casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonN.png"))
-                        nCasillas(filas, columnas) = 21
+                        nCasillas(filas, columnas) = "np"
                     End If
 
                     If columnas = 0 Then
@@ -75,31 +75,31 @@
                         'Colocamos y asignamos la identificación de las torres negras
                         If filas = 0 Or filas = 7 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/TorreN.png"))
-                            nCasillas(filas, columnas) = 22
+                            nCasillas(filas, columnas) = "nt"
                         End If
 
                         'Colocamos y asignamos la identificación de los caballos negros
                         If filas = 1 Or filas = 6 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/caballoN.png"))
-                            nCasillas(filas, columnas) = 23
+                            nCasillas(filas, columnas) = "nc"
                         End If
 
                         'Colocamos y asignamos la identificación de los alfiles negros
                         If filas = 2 Or filas = 5 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/alfilN.png"))
-                            nCasillas(filas, columnas) = 24
+                            nCasillas(filas, columnas) = "na"
                         End If
 
                         'Colocamos y asignamos la identificación de la reina negra
                         If filas = 3 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reinaN.png"))
-                            nCasillas(filas, columnas) = 25
+                            nCasillas(filas, columnas) = "nr"
                         End If
 
                         'Colocamos y asignamos la identificación del rey negro
                         If filas = 4 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyN.png"))
-                            nCasillas(filas, columnas) = 26
+                            nCasillas(filas, columnas) = "nR"
                         End If
                     End If
 
@@ -108,31 +108,31 @@
                         'Colocamos y asignamos la identificación de las torres blancas
                         If filas = 0 Or filas = 7 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/TorreB.png"))
-                            nCasillas(filas, columnas) = 12
+                            nCasillas(filas, columnas) = "bt"
                         End If
 
                         'Colocamos y asignamos la identificación de los caballos blancos
                         If filas = 1 Or filas = 6 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/caballoB.png"))
-                            nCasillas(filas, columnas) = 13
+                            nCasillas(filas, columnas) = "bc"
                         End If
 
                         'Colocamos y asignamos la identificación de los alfiles blancos
                         If filas = 2 Or filas = 5 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/alfilB.png"))
-                            nCasillas(filas, columnas) = 14
+                            nCasillas(filas, columnas) = "ba"
                         End If
 
                         'Colocamos y asignamos la identificación de la reina blanca
                         If filas = 3 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reinaB.png"))
-                            nCasillas(filas, columnas) = 15
+                            nCasillas(filas, columnas) = "br"
                         End If
 
                         'Colocamos y asignamos la identificación del rey blanco
                         If filas = 4 Then
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyB.png"))
-                            nCasillas(filas, columnas) = 16
+                            nCasillas(filas, columnas) = "bR"
                         End If
                     End If
 
@@ -173,52 +173,62 @@
             movimientoCaballo = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             'MsgBox(movimientoAlfil)
             If movimientoTorre = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = 12 Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = 0
-                    nCasillas(ncolumnafinal, nfilafinal) = 12
+                If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "t" Then
+                    Dim color As String = nCasillas(ncolumnainicial, nfilainicial).Substring(0, 1)
+                    If color = "b" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "bt"
+                    ElseIf color = "n" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "nt"
+
+                    End If
+
 
                 End If
             End If
 
             If movimientoCaballo = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = 13 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then
                     casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = 0
-                    nCasillas(ncolumnafinal, nfilafinal) = 13
+                    nCasillas(ncolumnainicial, nfilainicial) = ""
+                    nCasillas(ncolumnafinal, nfilafinal) = "bc"
 
                 End If
             End If
 
             If movimientoRey = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = 16 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
                     casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = 0
-                    nCasillas(ncolumnafinal, nfilafinal) = 16
+                    nCasillas(ncolumnainicial, nfilainicial) = ""
+                    nCasillas(ncolumnafinal, nfilafinal) = "bR"
 
                 End If
             End If
 
             If movimientoReina = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = 15 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
                     casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = 0
-                    nCasillas(ncolumnafinal, nfilafinal) = 15
+                    nCasillas(ncolumnainicial, nfilainicial) = ""
+                    nCasillas(ncolumnafinal, nfilafinal) = "br"
 
                 End If
             End If
 
 
             If movimientoAlfil = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = 14 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then
                     casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = 0
-                    nCasillas(ncolumnafinal, nfilafinal) = 14
+                    nCasillas(ncolumnainicial, nfilainicial) = ""
+                    nCasillas(ncolumnafinal, nfilafinal) = "ba"
 
                 End If
 
@@ -230,25 +240,25 @@
             MsgBox(sender.name)
             ncolumnainicial = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna actual donde esta colocada la pieza
             nfilainicial = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila actual donde esta colocada la pieza
-            If nCasillas(ncolumnainicial, nfilainicial) = 0 Then 'si la casilla está vacia...
+            If nCasillas(ncolumnainicial, nfilainicial) = "" Then 'si la casilla está vacia...
                 MsgBox("no puedes hacer nada")
             Else
                 MsgBox("funciona")
-                If nCasillas(ncolumnainicial, nfilainicial) = 12 Then 'se lo he asignado al peon para mejor comprobacion
+                If nCasillas(ncolumnainicial, nfilainicial) = "bt" Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
-                If nCasillas(ncolumnainicial, nfilainicial) = 13 Then 'se lo he asignado al peon para mejor comprobacion
+                If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
-                If nCasillas(ncolumnainicial, nfilainicial) = 14 Then 'se lo he asignado al peon para mejor comprobacion
-                    comprueba = True
-                End If
-
-                If nCasillas(ncolumnainicial, nfilainicial) = 15 Then 'se lo he asignado al peon para mejor comprobacion
+                If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
 
-                If nCasillas(ncolumnainicial, nfilainicial) = 16 Then 'se lo he asignado al peon para mejor comprobacion
+                If nCasillas(ncolumnainicial, nfilainicial) = "br" Then 'se lo he asignado al peon para mejor comprobacion
+                    comprueba = True
+                End If
+
+                If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
 
