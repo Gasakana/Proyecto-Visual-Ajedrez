@@ -152,18 +152,21 @@
         If (comprueba) Then 'usando este boolean utilizamos el mismo metodo para la inicial y la final
             Dim torre As New Torre
             Dim alfil As New Alfil
+            Dim reina As New Reina
             Dim movimientoTorre As Integer
             Dim movimientoAlfil As Integer
+            Dim movimientoReina As Integer
 
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
             MsgBox(ncolumnafinal & nfilafinal & "segundo")
             movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+            movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             'MsgBox(movimientoAlfil)
             If movimientoTorre = 0 Then
                 If nCasillas(ncolumnainicial, nfilainicial) = 12 Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonB.png"))
+                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                     nCasillas(ncolumnainicial, nfilainicial) = 0
                     nCasillas(ncolumnafinal, nfilafinal) = 12
@@ -171,13 +174,23 @@
                 End If
             End If
 
-
-            If movimientoAlfil = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = 21 Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonN.png"))
+            If movimientoReina = 0 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = 15 Then
+                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                     nCasillas(ncolumnainicial, nfilainicial) = 0
-                    nCasillas(ncolumnafinal, nfilafinal) = 21
+                    nCasillas(ncolumnafinal, nfilafinal) = 15
+
+                End If
+            End If
+
+
+            If movimientoAlfil = 0 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = 14 Then
+                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
+                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                    nCasillas(ncolumnainicial, nfilainicial) = 0
+                    nCasillas(ncolumnafinal, nfilafinal) = 14
 
                 End If
 
@@ -196,7 +209,10 @@
                 If nCasillas(ncolumnainicial, nfilainicial) = 12 Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
-                If nCasillas(ncolumnainicial, nfilainicial) = 21 Then 'se lo he asignado al peon para mejor comprobacion
+                If nCasillas(ncolumnainicial, nfilainicial) = 14 Then 'se lo he asignado al peon para mejor comprobacion
+                    comprueba = True
+                End If
+                If nCasillas(ncolumnainicial, nfilainicial) = 15 Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
 
