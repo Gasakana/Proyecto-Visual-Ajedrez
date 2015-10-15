@@ -154,11 +154,13 @@
             Dim alfil As New Alfil
             Dim reina As New Reina
             Dim rey As New Rey
+            Dim caballo As New Caballo
 
             Dim movimientoTorre As Integer
             Dim movimientoAlfil As Integer
             Dim movimientoReina As Integer
             Dim movimientoRey As Integer
+            Dim movimientoCaballo As Integer
 
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
@@ -168,6 +170,7 @@
             movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             movimientoRey = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+            movimientoCaballo = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
             'MsgBox(movimientoAlfil)
             If movimientoTorre = 0 Then
                 If nCasillas(ncolumnainicial, nfilainicial) = 12 Then
@@ -175,6 +178,16 @@
                     casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                     nCasillas(ncolumnainicial, nfilainicial) = 0
                     nCasillas(ncolumnafinal, nfilafinal) = 12
+
+                End If
+            End If
+
+            If movimientoCaballo = 0 Then
+                If nCasillas(ncolumnainicial, nfilainicial) = 13 Then
+                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
+                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                    nCasillas(ncolumnainicial, nfilainicial) = 0
+                    nCasillas(ncolumnafinal, nfilafinal) = 13
 
                 End If
             End If
@@ -224,9 +237,13 @@
                 If nCasillas(ncolumnainicial, nfilainicial) = 12 Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
+                If nCasillas(ncolumnainicial, nfilainicial) = 13 Then 'se lo he asignado al peon para mejor comprobacion
+                    comprueba = True
+                End If
                 If nCasillas(ncolumnainicial, nfilainicial) = 14 Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
+
                 If nCasillas(ncolumnainicial, nfilainicial) = 15 Then 'se lo he asignado al peon para mejor comprobacion
                     comprueba = True
                 End If
