@@ -197,61 +197,76 @@
             End If
 
             If movimientoCaballo = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "bc"
-                ElseIf color = "n" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoN.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "nc"
+
+                If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "c" Then
+                    If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "bc"
+                    ElseIf color = "n" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "nc"
+                    End If
                 End If
+
             End If
 
             If movimientoRey = 0 Then
+
+                'If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "R" Then
                 If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "bR"
-                ElseIf color = "n" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "nR"
-                End If
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "bR"
+                    ElseIf color = "n" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "nR"
+                    End If
+                'End If
             End If
 
+
             If movimientoReina = 0 Then
+
+                'If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "r" Then
                 If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "br"
-                ElseIf color = "n" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "nr"
-                End If
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "br"
+                    ElseIf color = "n" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "nr"
+                    End If
+                ' End If
             End If
+
 
 
             If movimientoAlfil = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "ba"
-                ElseIf color = "n" Then
-                    casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilN.png"))
-                    casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                    nCasillas(ncolumnainicial, nfilainicial) = ""
-                    nCasillas(ncolumnafinal, nfilafinal) = "na"
-                End If
 
+                If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "a" Then
+                    If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "ba"
+                    ElseIf color = "n" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnafinal, nfilafinal) = "na"
+                    End If
+
+                End If
             End If
 
 
@@ -282,6 +297,23 @@
                     comprueba = True
                 End If
 
+                If nCasillas(ncolumnainicial, nfilainicial) = "nt" Then
+                    comprueba = True
+                End If
+                If nCasillas(ncolumnainicial, nfilainicial) = "nc" Then
+                    comprueba = True
+                End If
+                If nCasillas(ncolumnainicial, nfilainicial) = "na" Then
+                    comprueba = True
+                End If
+
+                If nCasillas(ncolumnainicial, nfilainicial) = "nr" Then
+                    comprueba = True
+                End If
+
+                If nCasillas(ncolumnainicial, nfilainicial) = "nR" Then
+                    comprueba = True
+                End If
             End If
         End If
     End Sub
