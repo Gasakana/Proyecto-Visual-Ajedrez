@@ -22,13 +22,13 @@
         End If
 
         If columnaFinal = columnaInicial - 2 And filaFinal = filaInicial - 1 Then
-            If nCasillas(columnaFinal, filaFinal) = 0 Then
+            If nCasillas(columnaFinal, filaFinal) = "" Then
                 Return 0
             End If
         End If
 
         If columnaFinal = columnaInicial - 2 And filaFinal = filaInicial + 1 Then
-            If nCasillas(columnaFinal, filaFinal) = 0 Then
+            If nCasillas(columnaFinal, filaFinal) = "" Then
                 Return 0
             End If
         End If

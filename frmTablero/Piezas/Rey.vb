@@ -44,7 +44,7 @@
                 'arriba
             ElseIf filaFinal = filaInicial - 1
                 For x = filaFinal To filaInicial - 1
-                    If nCasillas(columnaInicial, x) <> 0 Then
+                    If nCasillas(columnaInicial, x) <> "" Then
                         Return 1
                     End If
                     If x = filaInicial - 1 Then

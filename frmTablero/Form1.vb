@@ -58,17 +58,17 @@
                     'Colocamos inicialmente las piezas de ambos colores en sus casillas correspondientes
                     'y le asignamos una identificación de dos dígitos: primer digito: Color, segundo dígito: Pieza
 
-                    'Colocamos y asignamos la identificación de los peones blancos
-                    If columnas = 6 Then
-                        casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonB.png"))
-                        nCasillas(filas, columnas) = "bp"
-                    End If
+                    ''Colocamos y asignamos la identificación de los peones blancos
+                    'If columnas = 6 Then
+                    '    casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonB.png"))
+                    '    nCasillas(filas, columnas) = "bp"
+                    'End If
 
-                    'Colocamos y asignamos la identificación de los peones negros
-                    If columnas = 1 Then
-                        casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonN.png"))
-                        nCasillas(filas, columnas) = "np"
-                    End If
+                    ''Colocamos y asignamos la identificación de los peones negros
+                    'If columnas = 1 Then
+                    '    casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonN.png"))
+                    '    nCasillas(filas, columnas) = "np"
+                    'End If
 
                     If columnas = 0 Then
 
@@ -150,14 +150,14 @@
 
 
         If (comprueba) Then 'usando este boolean utilizamos el mismo metodo para la inicial y la final
-            Dim torre As New Torre
-            Dim alfil As New Alfil
-            Dim reina As New Reina
-            Dim rey As New Rey
-            Dim caballo As New Caballo
+
+
+
+
+
             Dim peon As New Peon
 
-            Dim movimientoTorre As Integer
+
             Dim movimientoAlfil As Integer
             Dim movimientoReina As Integer
             Dim movimientoRey As Integer
@@ -166,18 +166,22 @@
 
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
-            MsgBox(ncolumnafinal & nfilafinal & "segundo")
 
-            movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
-            movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
-            movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
-            movimientoRey = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
-            movimientoCaballo = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+
+
+
+
+
             'movimientoPeon = peon.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
-            'MsgBox(movimientoAlfil)
+
             Dim color As String = nCasillas(ncolumnainicial, nfilainicial).Substring(0, 1)
-            If movimientoTorre = 0 Then
-                If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "t" Then
+
+            If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "t" Then
+                Dim torre As New Torre
+                Dim movimientoTorre As Integer
+                movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+                If movimientoTorre = 0 Then
+
 
                     If color = "b" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
@@ -194,11 +198,14 @@
 
 
                 End If
-            End If
 
-            If movimientoCaballo = 0 Then
+            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "c" Then
+                Dim caballo As New Caballo
+                movimientoCaballo = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
 
-                If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "c" Then
+                If movimientoCaballo = 0 Then
+
+
                     If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
@@ -212,12 +219,16 @@
                     End If
                 End If
 
-            End If
 
-            If movimientoRey = 0 Then
 
-                'If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "R" Then
-                If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
+
+            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "R" Then
+                Dim rey As New Rey
+                movimientoRey = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+                If movimientoRey = 0 Then
+
+
+                    If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = ""
@@ -228,14 +239,16 @@
                         nCasillas(ncolumnainicial, nfilainicial) = ""
                         nCasillas(ncolumnafinal, nfilafinal) = "nR"
                     End If
-                'End If
-            End If
+                End If
 
 
-            If movimientoReina = 0 Then
 
-                'If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "r" Then
-                If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
+            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "r" Then
+                Dim reina As New Reina
+                movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+
+                If movimientoReina = 0 Then
+                    If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = ""
@@ -246,14 +259,16 @@
                         nCasillas(ncolumnainicial, nfilainicial) = ""
                         nCasillas(ncolumnafinal, nfilafinal) = "nr"
                     End If
-                ' End If
-            End If
+                End If
 
 
 
-            If movimientoAlfil = 0 Then
 
-                If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "a" Then
+            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "a" Then
+                    Dim alfil As New Alfil
+                movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+
+                If movimientoAlfil = 0 Then
                     If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
@@ -272,7 +287,7 @@
 
             comprueba = False 'se restablece comprobar a false para el siguiente uso
         Else
-            MsgBox(sender.name)
+
             ncolumnainicial = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna actual donde esta colocada la pieza
             nfilainicial = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila actual donde esta colocada la pieza
             If nCasillas(ncolumnainicial, nfilainicial) = "" Then 'si la casilla está vacia...

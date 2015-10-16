@@ -38,7 +38,7 @@
             While (filaInicial <> filaFinal And columnaInicial <> columnaFinal)
                 filaInicial -= 1
                 columnaInicial -= 1
-                If nCasillas(columnaInicial, filaInicial) <> 0 Then
+                If nCasillas(columnaInicial, filaInicial) <> "" Then
                     Return 1
                 End If
                 If columnaInicial = columnaFinal And filaInicial = filaFinal Then
