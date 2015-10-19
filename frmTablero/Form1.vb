@@ -7,6 +7,9 @@
     Dim ncolumnainicial, nfilainicial, ncolumnafinal, nfilafinal As Integer 'Variables donde se guarda el valor de la fila inicial/final y columna inicial/final
     Dim casillasPB(7, 7) As PictureBox 'Matriz de 8 x 8 de tipo PictureBox para colocar las casillas del tablero
 
+
+
+
     'Metodos/Eventos
 
     'Evento Load: Al cargar el formulario aparece el tablero de ajedrez coloreado 
@@ -19,6 +22,7 @@
         Dim columnas As Integer 'Variable de tipo Integer, el cual se usa para crear el número de columnas del tablero 
 
         'Bucle anidado para crear las filas y columnas del tablero
+
         For filas = 0 To 7
             For columnas = 0 To 7
                 Dim pb As New PictureBox 'Variable de tipo PictureBox que sirve para reflejar cada casilla del tablero
@@ -54,6 +58,7 @@
                             pb.BackColor = Color.Bisque
                         End If
                     End If
+
 
                     'Colocamos inicialmente las piezas de ambos colores en sus casillas correspondientes
                     'y le asignamos una identificación de dos dígitos: primer digito: Color, segundo dígito: Pieza
@@ -101,9 +106,9 @@
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyN.png"))
                             nCasillas(filas, columnas) = "nR"
                         End If
-                    End If
 
-                    If columnas = 7 Then
+
+                    ElseIf columnas = 7 Then
 
                         'Colocamos y asignamos la identificación de las torres blancas
                         If filas = 0 Or filas = 7 Then
@@ -134,6 +139,8 @@
                             casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/reyB.png"))
                             nCasillas(filas, columnas) = "bR"
                         End If
+                    Else
+                        nCasillas(filas, columnas) = "xx"
                     End If
 
                     'Añadimos los controles de PictureBox en el formulario 
@@ -175,23 +182,24 @@
             'movimientoPeon = peon.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
 
             Dim color As String = nCasillas(ncolumnainicial, nfilainicial).Substring(0, 1)
+            Dim ficha As String = nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1)
 
-            If nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "t" Then
+            If ficha = "t" Then
                 Dim torre As New Torre
                 Dim movimientoTorre As Integer
-                movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+                movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
                 If movimientoTorre = 0 Then
 
 
                     If color = "b" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "bt"
                     ElseIf color = "n" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nt"
 
                     End If
@@ -199,9 +207,9 @@
 
                 End If
 
-            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "c" Then
+            ElseIf ficha = "c" Then
                 Dim caballo As New Caballo
-                movimientoCaballo = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+                movimientoCaballo = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
                 If movimientoCaballo = 0 Then
 
@@ -209,12 +217,12 @@
                     If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "bc"
                     ElseIf color = "n" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoN.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nc"
                     End If
                 End If
@@ -222,41 +230,41 @@
 
 
 
-            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "R" Then
+            ElseIf ficha = "R" Then
                 Dim rey As New Rey
-                movimientoRey = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+                movimientoRey = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
                 If movimientoRey = 0 Then
 
 
                     If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "bR"
                     ElseIf color = "n" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nR"
                     End If
                 End If
 
 
 
-            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "r" Then
+            ElseIf ficha = "r" Then
                 Dim reina As New Reina
-                movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+                movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
                 If movimientoReina = 0 Then
                     If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "br"
                     ElseIf color = "n" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nr"
                     End If
                 End If
@@ -264,20 +272,20 @@
 
 
 
-            ElseIf nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) = "a" Then
-                    Dim alfil As New Alfil
-                movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
+            ElseIf ficha = "a" Then
+                Dim alfil As New Alfil
+                movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
                 If movimientoAlfil = 0 Then
                     If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "ba"
                     ElseIf color = "n" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilN.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = ""
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "na"
                     End If
 
@@ -290,7 +298,7 @@
 
             ncolumnainicial = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna actual donde esta colocada la pieza
             nfilainicial = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila actual donde esta colocada la pieza
-            If nCasillas(ncolumnainicial, nfilainicial) = "" Then 'si la casilla está vacia...
+            If nCasillas(ncolumnainicial, nfilainicial) = "xx" Then 'si la casilla está vacia...
                 MsgBox("no puedes hacer nada")
             Else
                 MsgBox("funciona")

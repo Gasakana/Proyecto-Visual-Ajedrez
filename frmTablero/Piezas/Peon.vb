@@ -2,7 +2,7 @@
     Dim retorno As Integer = 1
     Dim contador As Integer
     Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
-                          ByVal filaFinal As Integer, ByVal columnaFinal As Integer)
+                          ByVal filaFinal As Integer, ByVal columnaFinal As Integer, ByVal color As String)
 
         If columnaInicial = columnaFinal Then
             If filaFinal < filaInicial Then

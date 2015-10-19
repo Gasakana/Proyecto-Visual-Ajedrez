@@ -2,24 +2,44 @@
 
     Dim retorno As Integer = 1
     Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
-                          ByVal filaFinal As Integer, ByVal columnaFinal As Integer)
+                          ByVal filaFinal As Integer, ByVal columnaFinal As Integer, ByVal color As String)
 
         'Es horizontal
         If filaInicial = filaFinal Then
             ' --------->
             If columnaFinal = columnaInicial + 1 Then
+                'Es horizontal
+                ' --------->
+
                 For y = columnaInicial + 1 To columnaFinal
-                    If nCasillas(y, filaInicial) <> "" Then
+
+                    If y = columnaFinal Then
+                        If nCasillas(y, filaInicial).Substring(0, 1) <> color And (nCasillas(y, filaInicial).Substring(0, 1) <> "x") Then
+                            Return 0
+                        End If
+                    End If
+
+                    If nCasillas(y, filaInicial) <> "xx" Then
                         Return 1
                     End If
+
+
                     If y = columnaFinal Then
                         retorno = 0
                     End If
                 Next
                 '<----------
             ElseIf columnaFinal = columnaInicial - 1
-                For y = columnaFinal To columnaInicial - 1
-                    If nCasillas(y, filaInicial) <> "" Then
+                For y = columnaInicial - 1 To columnaFinal Step -1
+                    If y = columnaFinal Then
+                        If nCasillas(y, filaInicial).Substring(0, 1) <> color And (nCasillas(y, filaInicial).Substring(0, 1) <> "x") Then
+                            Return 0
+                        End If
+                    End If
+                    If nCasillas(y, filaInicial).Substring(0, 1) <> color And (nCasillas(y, filaInicial).Substring(0, 1) <> "x") Then
+                        retorno = 0
+                    End If
+                    If nCasillas(y, filaInicial) <> "xx" Then
                         Return 1
                     End If
                     If y = columnaInicial - 1 Then
@@ -30,11 +50,18 @@
         End If
 
         'Vertical
+        'Vertical
         If columnaInicial = columnaFinal Then
             ' abajo
             If filaFinal = filaInicial + 1 Then
                 For x = filaInicial + 1 To filaFinal
-                    If nCasillas(columnaInicial, x) <> "" Then
+                    If x = filaFinal Then
+                        If nCasillas(columnaInicial, x).Substring(0, 1) <> color And (nCasillas(columnaInicial, x).Substring(0, 1) <> "x") Then
+                            Return 0
+                        End If
+                    End If
+
+                    If nCasillas(columnaInicial, x) <> "xx" Then
                         Return 1
                     End If
                     If x = filaFinal Then
@@ -43,8 +70,15 @@
                 Next
                 'arriba
             ElseIf filaFinal = filaInicial - 1
-                For x = filaFinal To filaInicial - 1
-                    If nCasillas(columnaInicial, x) <> "" Then
+                For x = filaInicial - 1 To filaFinal Step -1
+                    If x = filaFinal Then
+                        If nCasillas(columnaInicial, x).Substring(0, 1) <> color And (nCasillas(columnaInicial, x).Substring(0, 1) <> "x") Then
+                            Return 0
+                        End If
+                    End If
+
+
+                    If nCasillas(columnaInicial, x) <> "xx" Then
                         Return 1
                     End If
                     If x = filaInicial - 1 Then
@@ -60,7 +94,13 @@
             While (filaInicial <> filaFinal And columnaInicial <> columnaFinal)
                 filaInicial += 1
                 columnaInicial += 1
-                If nCasillas(columnaInicial, filaInicial) <> "" Then
+                If columnaInicial = columnaFinal And filaInicial = filaFinal Then
+                    If nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> color And (nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> "x") Then
+                        Return 0
+                    End If
+                End If
+
+                If nCasillas(columnaInicial, filaInicial) <> "xx" Then
                     Return 1
                 End If
                 If columnaInicial = columnaFinal And filaInicial = filaFinal Then
@@ -75,7 +115,12 @@
             While (filaInicial <> filaFinal And columnaInicial <> columnaFinal)
                 filaInicial += 1
                 columnaInicial -= 1
-                If nCasillas(columnaInicial, filaInicial) <> "" Then
+                If columnaInicial = columnaFinal And filaInicial = filaFinal Then
+                    If nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> color And (nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> "x") Then
+                        Return 0
+                    End If
+                End If
+                If nCasillas(columnaInicial, filaInicial) <> "xx" Then
                     Return 1
                 End If
                 If columnaInicial = columnaFinal And filaInicial = filaFinal Then
@@ -90,7 +135,12 @@
             While (filaInicial <> filaFinal And columnaInicial <> columnaFinal)
                 filaInicial -= 1
                 columnaInicial -= 1
-                If nCasillas(columnaInicial, filaInicial) <> "" Then
+                If columnaInicial = columnaFinal And filaInicial = filaFinal Then
+                    If nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> color And (nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> "x") Then
+                        Return 0
+                    End If
+                End If
+                If nCasillas(columnaInicial, filaInicial) <> "xx" Then
                     Return 1
                 End If
                 If columnaInicial = columnaFinal And filaInicial = filaFinal Then
@@ -105,7 +155,12 @@
             While (filaInicial <> filaFinal And columnaInicial <> columnaFinal)
                 filaInicial -= 1
                 columnaInicial += 1
-                If nCasillas(columnaInicial, filaInicial) <> "" Then
+                If columnaInicial = columnaFinal And filaInicial = filaFinal Then
+                    If nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> color And (nCasillas(columnaInicial, filaInicial).Substring(0, 1) <> "x") Then
+                        Return 0
+                    End If
+                End If
+                If nCasillas(columnaInicial, filaInicial) <> "xx" Then
                     Return 1
                 End If
                 If columnaInicial = columnaFinal And filaInicial = filaFinal Then
