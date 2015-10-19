@@ -50,7 +50,6 @@
         End If
 
         'Vertical
-        'Vertical
         If columnaInicial = columnaFinal Then
             ' abajo
             If filaFinal = filaInicial + 1 Then

@@ -63,19 +63,19 @@
                     'Colocamos inicialmente las piezas de ambos colores en sus casillas correspondientes
                     'y le asignamos una identificación de dos dígitos: primer digito: Color, segundo dígito: Pieza
 
-                    ''Colocamos y asignamos la identificación de los peones blancos
-                    'If columnas = 6 Then
-                    '    casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonB.png"))
-                    '    nCasillas(filas, columnas) = "bp"
-                    'End If
+                    'Colocamos y asignamos la identificación de los peones blancos
+                    If columnas = 6 Then
+                        casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonB.png"))
+                        nCasillas(filas, columnas) = "bp"
+                    ElseIf columnas = 1 Then
 
-                    ''Colocamos y asignamos la identificación de los peones negros
-                    'If columnas = 1 Then
-                    '    casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonN.png"))
-                    '    nCasillas(filas, columnas) = "np"
-                    'End If
+                        'Colocamos y asignamos la identificación de los peones negros
 
-                    If columnas = 0 Then
+                        casillasPB(filas, columnas).Load(Application.StartupPath & ("/images/peonN.png"))
+                        nCasillas(filas, columnas) = "np"
+
+
+                    ElseIf columnas = 0 Then
 
                         'Colocamos y asignamos la identificación de las torres negras
                         If filas = 0 Or filas = 7 Then
@@ -158,39 +158,20 @@
 
         If (comprueba) Then 'usando este boolean utilizamos el mismo metodo para la inicial y la final
 
-
-
-
-
-            Dim peon As New Peon
-
-
-            Dim movimientoAlfil As Integer
-            Dim movimientoReina As Integer
-            Dim movimientoRey As Integer
-            Dim movimientoCaballo As Integer
-            Dim movimientoPeon As Integer
+            Dim movimientoFicha As Integer
 
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
 
-
-
-
-
-
-            'movimientoPeon = peon.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal)
 
             Dim color As String = nCasillas(ncolumnainicial, nfilainicial).Substring(0, 1)
             Dim ficha As String = nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1)
 
             If ficha = "t" Then
                 Dim torre As New Torre
-                Dim movimientoTorre As Integer
-                movimientoTorre = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
-                If movimientoTorre = 0 Then
 
-
+                movimientoFicha = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                If movimientoFicha = 0 Then
                     If color = "b" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
@@ -206,12 +187,29 @@
 
 
                 End If
+            ElseIf ficha = "p" Then
+                Dim peon As New Peon
+                movimientoFicha = peon.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                If movimientoFicha = 0 Then
+                    If color = "b" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonB.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                        nCasillas(ncolumnafinal, nfilafinal) = "bp"
+                    ElseIf color = "n" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/peonN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                        nCasillas(ncolumnafinal, nfilafinal) = "np"
+
+                    End If
+                End If
 
             ElseIf ficha = "c" Then
                 Dim caballo As New Caballo
-                movimientoCaballo = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                movimientoFicha = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
-                If movimientoCaballo = 0 Then
+                If movimientoFicha = 0 Then
 
 
                     If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then
@@ -232,8 +230,8 @@
 
             ElseIf ficha = "R" Then
                 Dim rey As New Rey
-                movimientoRey = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
-                If movimientoRey = 0 Then
+                movimientoFicha = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                If movimientoFicha = 0 Then
 
 
                     If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
@@ -253,9 +251,9 @@
 
             ElseIf ficha = "r" Then
                 Dim reina As New Reina
-                movimientoReina = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                movimientoFicha = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
-                If movimientoReina = 0 Then
+                If movimientoFicha = 0 Then
                     If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
@@ -274,9 +272,9 @@
 
             ElseIf ficha = "a" Then
                 Dim alfil As New Alfil
-                movimientoAlfil = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                movimientoFicha = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
-                If movimientoAlfil = 0 Then
+                If movimientoFicha = 0 Then
                     If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
@@ -302,41 +300,9 @@
                 MsgBox("no puedes hacer nada")
             Else
                 MsgBox("funciona")
-                If nCasillas(ncolumnainicial, nfilainicial) = "bt" Then
-                    comprueba = True
-                End If
-                If nCasillas(ncolumnainicial, nfilainicial) = "bc" Then
-                    comprueba = True
-                End If
-                If nCasillas(ncolumnainicial, nfilainicial) = "ba" Then
-                    comprueba = True
-                End If
 
-                If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
-                    comprueba = True
-                End If
+                comprueba = True
 
-                If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
-                    comprueba = True
-                End If
-
-                If nCasillas(ncolumnainicial, nfilainicial) = "nt" Then
-                    comprueba = True
-                End If
-                If nCasillas(ncolumnainicial, nfilainicial) = "nc" Then
-                    comprueba = True
-                End If
-                If nCasillas(ncolumnainicial, nfilainicial) = "na" Then
-                    comprueba = True
-                End If
-
-                If nCasillas(ncolumnainicial, nfilainicial) = "nr" Then
-                    comprueba = True
-                End If
-
-                If nCasillas(ncolumnainicial, nfilainicial) = "nR" Then
-                    comprueba = True
-                End If
             End If
         End If
     End Sub

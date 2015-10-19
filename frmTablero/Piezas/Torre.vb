@@ -66,20 +66,6 @@
                 Next
                 'arriba
             ElseIf filaFinal < filaInicial
-                'For x = filaFinal To filaInicial - 1
-
-                '    If nCasillas(columnaInicial, x).Substring(0, 1) <> color And (nCasillas(columnaInicial, x).Substring(0, 1) <> "x") Then
-
-                '            Return 0
-                '        End If
-
-                '    If nCasillas(columnaInicial, x) <> "xx" Then
-                '        Return 1
-                '    End If
-                '    If x = filaInicial - 1 Then
-                '        retorno = 0
-                '    End If
-                'Next
                 For x = filaInicial - 1 To filaFinal Step -1
                     If x = filaFinal Then
                         If nCasillas(columnaInicial, x).Substring(0, 1) <> color And (nCasillas(columnaInicial, x).Substring(0, 1) <> "x") Then
