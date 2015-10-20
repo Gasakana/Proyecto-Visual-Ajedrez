@@ -204,6 +204,9 @@
 
                     End If
                 End If
+                If movimientoFicha = 2 Then
+
+                End If
 
             ElseIf ficha = "c" Then
                 Dim caballo As New Caballo
