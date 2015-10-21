@@ -76,3 +76,4 @@ C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Aj
 C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.pdb
 C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.vbprojResolveAssemblyReference.cache
 C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmPromocion.resources
+C:\Users\2DAM\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmPromocion.resources

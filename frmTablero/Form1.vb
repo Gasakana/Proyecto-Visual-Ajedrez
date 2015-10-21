@@ -1,7 +1,7 @@
 ﻿Public Class frmTablero
 
     'Variables globales
-
+    Public promo As String
     Dim jugadores As Integer
     Dim nCasillas(7, 7) As String 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
     Dim comprueba As Boolean 'Booleano que comprueba la casilla inicial y la casilla final en la que se encuentra la pieza seleccionada
@@ -222,11 +222,88 @@
                         nCasillas(ncolumnafinal, nfilafinal) = "np"
 
 
-
-
                     End If
                 ElseIf movimientoFicha = 2 Then
-                    'promocion()
+                    Dim frmpromo As New frmPromocion(color)
+                    frmpromo.ShowDialog()
+                    If color = "b" Then
+                        If promo = "torre" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                                MsgBox("Han ganado las blancas")
+                                End
+                            End If
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "bt"
+                        ElseIf promo = "alfil" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                                MsgBox("Han ganado las blancas")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "ba"
+                        ElseIf promo = "caballo" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                                MsgBox("Han ganado las blancas")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "bc"
+                        ElseIf promo = "reina" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                                MsgBox("Han ganado las blancas")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "br"
+                        End If
+                    ElseIf color = "n" Then
+                        If promo = "torre" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                                MsgBox("Han ganado las negras")
+                                End
+                            End If
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "nt"
+                        ElseIf promo = "alfil" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilN.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                                MsgBox("Han ganado las negras")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "na"
+                        ElseIf promo = "caballo" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoN.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                                MsgBox("Han ganado las negras")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "nc"
+                        ElseIf promo = "reina" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                                MsgBox("Han ganado las negras")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "nr"
+                        End If
+                    End If
+
                 Else
                     MsgBox("movimiento no permitido")
                     jugadores -= 1
@@ -385,17 +462,10 @@
                 End If
             Else
 
-
-
-
-
-
             End If
         End If
     End Sub
 
-    Private Sub promocion(sender As Object, e As EventArgs)
 
-    End Sub
 
 End Class

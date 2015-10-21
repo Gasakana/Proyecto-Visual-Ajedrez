@@ -52,6 +52,7 @@ Partial Class frmPromocion
         Me.pbTorre.Location = New System.Drawing.Point(84, 55)
         Me.pbTorre.Name = "pbTorre"
         Me.pbTorre.Size = New System.Drawing.Size(41, 42)
+        Me.pbTorre.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbTorre.TabIndex = 1
         Me.pbTorre.TabStop = False
         '
@@ -80,6 +81,7 @@ Partial Class frmPromocion
         Me.pbAlfil.Location = New System.Drawing.Point(84, 117)
         Me.pbAlfil.Name = "pbAlfil"
         Me.pbAlfil.Size = New System.Drawing.Size(41, 42)
+        Me.pbAlfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbAlfil.TabIndex = 4
         Me.pbAlfil.TabStop = False
         '
@@ -88,6 +90,7 @@ Partial Class frmPromocion
         Me.pbCaballo.Location = New System.Drawing.Point(84, 179)
         Me.pbCaballo.Name = "pbCaballo"
         Me.pbCaballo.Size = New System.Drawing.Size(41, 42)
+        Me.pbCaballo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbCaballo.TabIndex = 5
         Me.pbCaballo.TabStop = False
         '
@@ -96,6 +99,7 @@ Partial Class frmPromocion
         Me.pbReina.Location = New System.Drawing.Point(84, 243)
         Me.pbReina.Name = "pbReina"
         Me.pbReina.Size = New System.Drawing.Size(41, 42)
+        Me.pbReina.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbReina.TabIndex = 6
         Me.pbReina.TabStop = False
         '
