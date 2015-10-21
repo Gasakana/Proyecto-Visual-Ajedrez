@@ -31,6 +31,9 @@
                         If nCasillas(columnaInicial, x) <> "xx" Then
                             Return 1
                         End If
+                        If x = 0 Then
+                            Return 2
+                        End If
                         If x = filaInicial - 1 Then
                             retorno = 0
                         End If
@@ -44,6 +47,9 @@
 
                         If nCasillas(columnaInicial, filaInicial).ToString.Substring(0, 1) = color Or nCasillas(columnaInicial, filaInicial).ToString.Substring(0, 1) = "x" Then
                             Return 1
+                        End If
+                        If filaInicial = 0 Then
+                            Return 2
                         End If
                         If columnaInicial = columnaFinal And filaInicial = filaFinal Then
                             retorno = 0
@@ -64,6 +70,9 @@
                         Else
                             retorno = 0
                         End If
+                        If filaInicial = 0 Then
+                            Return 2
+                        End If
                         If columnaInicial = columnaFinal And filaInicial = filaFinal Then
                             retorno = 0
                         End If
@@ -72,9 +81,7 @@
                 End If
 
             End If
-            If filaFinal = 0 Then
-                Return 2
-            End If
+
         ElseIf color = "n" Then
             If columnaInicial = columnaFinal Then
                 If filaInicial = 1 Then
@@ -85,6 +92,9 @@
 
                             If nCasillas(columnaInicial, x) <> "xx" Then
                                 Return 1
+                            End If
+                            If x = 7 Then
+                                Return 2
                             End If
                             If x = filaFinal Then
                                 retorno = 0
@@ -103,6 +113,9 @@
                         If nCasillas(columnaInicial, x) <> "xx" Then
                             Return 1
                         End If
+                        If filaInicial = 7 Then
+                            Return 2
+                        End If
                         If x = filaInicial + 1 Then
                             retorno = 0
                         End If
@@ -117,6 +130,9 @@
 
                     If nCasillas(columnaInicial, filaInicial).ToString.Substring(0, 1) = color Or nCasillas(columnaInicial, filaInicial).ToString.Substring(0, 1) = "x" Then
                         Return 1
+                    End If
+                    If filaInicial = 7 Then
+                        Return 2
                     End If
                     If columnaInicial = columnaFinal And filaInicial = filaFinal Then
                         retorno = 0
@@ -137,15 +153,16 @@
                     Else
                         retorno = 0
                     End If
+                    If filaInicial = 7 Then
+                        Return 2
+                    End If
                     If columnaInicial = columnaFinal And filaInicial = filaFinal Then
                         retorno = 0
                     End If
 
                 End While
             End If
-            If filaFinal = 7 Then
-                Return 2
-            End If
+
         End If
 
         Return retorno
