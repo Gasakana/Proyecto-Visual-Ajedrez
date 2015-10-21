@@ -2,6 +2,7 @@
 
     'Variables globales
     Public promo As String
+    Dim reyblanco, reynegro, torreblanca1, torreblanca2, torrenegra1, torrenegra2 As Integer
     Dim jugadores As Integer
     Dim nCasillas(7, 7) As String 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
     Dim comprueba As Boolean 'Booleano que comprueba la casilla inicial y la casilla final en la que se encuentra la pieza seleccionada
@@ -345,70 +346,89 @@
 
             ElseIf ficha = "R" Then
                 Dim rey As New Rey
-                movimientoFicha = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
-                If movimientoFicha = 0 Then
-
-
-                    If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
-                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
-                        If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
-                            MsgBox("Han ganado las blancas")
-                            End
-                        End If
+                If ncolumnafinal = 1 And nfilafinal = 7 And reyblanco = 0 And torreblanca1 = 0 Then
+                    If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 1, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 2, nfilafinal) = "xx" Then
+                        reyblanco += 1
+                        torreblanca1 += 1
+                        MsgBox("enroque")
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "bR"
-                    ElseIf color = "n" Then
-                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
-                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
-                            MsgBox("Han ganado las negras")
-                            End
-                        End If
-                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
-                        nCasillas(ncolumnafinal, nfilafinal) = "nR"
+                        nCasillas(ncolumnafinal - 1, nfilafinal) = "xx"
+                        casillasPB(ncolumnafinal - 1, nfilafinal).Image = Nothing
+                        nCasillas(ncolumnafinal + 1, nfilafinal) = "bt"
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
+                        casillasPB(ncolumnafinal + 1, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
+
+
+
                     End If
-                Else
-                    MsgBox("movimiento no permitido")
-                    jugadores -= 1
                 End If
 
+                movimientoFicha = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                    If movimientoFicha = 0 Then
 
 
-            ElseIf ficha = "r" Then
-                Dim reina As New Reina
-                movimientoFicha = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
-
-                If movimientoFicha = 0 Then
-                    If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
-                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
-                        If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
-                            MsgBox("Han ganado las blancas")
-                            End
+                        If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                                MsgBox("Han ganado las blancas")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "bR"
+                        ElseIf color = "n" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                                MsgBox("Han ganado las negras")
+                                End
+                            End If
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "nR"
                         End If
-                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
-                        nCasillas(ncolumnafinal, nfilafinal) = "br"
-                    ElseIf color = "n" Then
-                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
-                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
-                            MsgBox("Han ganado las negras")
-                            End
-                        End If
-                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
-                        nCasillas(ncolumnafinal, nfilafinal) = "nr"
+                    Else
+                        MsgBox("movimiento no permitido")
+                        jugadores -= 1
                     End If
-                Else
-                    MsgBox("movimiento no permitido")
-                    jugadores -= 1
-                End If
+
+
+
+                ElseIf ficha = "r" Then
+                    Dim reina As New Reina
+                    movimientoFicha = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+
+                    If movimientoFicha = 0 Then
+                        If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
+                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                                MsgBox("Han ganado las blancas")
+                                End
+                            End If
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "br"
+                        ElseIf color = "n" Then
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                                MsgBox("Han ganado las negras")
+                                End
+                            End If
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "nr"
+                        End If
+                    Else
+                        MsgBox("movimiento no permitido")
+                        jugadores -= 1
+                    End If
 
 
 
 
-            ElseIf ficha = "a" Then
-                Dim alfil As New Alfil
+                ElseIf ficha = "a" Then
+                    Dim alfil As New Alfil
                 movimientoFicha = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
                 If movimientoFicha = 0 Then
