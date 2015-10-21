@@ -113,7 +113,7 @@
                         If nCasillas(columnaInicial, x) <> "xx" Then
                             Return 1
                         End If
-                        If filaInicial = 7 Then
+                        If filaInicial + 1 = 7 Then
                             Return 2
                         End If
                         If x = filaInicial + 1 Then
