@@ -75,3 +75,4 @@ C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Aj
 C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.vbproj.GenerateResource.Cache
 C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.pdb
 C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.vbprojResolveAssemblyReference.cache
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmPromocion.resources
