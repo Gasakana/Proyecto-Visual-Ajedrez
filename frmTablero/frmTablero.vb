@@ -1,8 +1,9 @@
 ﻿Public Class frmTablero
 
     'Variables globales
-    Dim minB As Integer = 5
-    Dim minN As Integer = 5
+    Public temporizador As Boolean
+    Public minB As Integer = 0
+    Public minN As Integer = 0
     Dim segB As Integer = 0
     Dim segN As Integer = 0
     Public promo As String
@@ -23,9 +24,14 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        timerBlanco.Start()
-        timerNegro.Start()
-        timerNegro.Enabled = False
+        If temporizador Then
+            lblBlanco.Text = minB.ToString.PadLeft(2, "0") & ":00"
+            lblNegro.Text = minN.ToString.PadLeft(2, "0") & ":00"
+            timerBlanco.Start()
+            timerNegro.Start()
+            timerNegro.Enabled = False
+        End If
+
         Dim filas As Integer 'Variable de tipo Integer, el cual se usa para crear el número de filas del tablero
         Dim columnas As Integer 'Variable de tipo Integer, el cual se usa para crear el número de columnas del tablero 
 
@@ -563,8 +569,10 @@
 
                     comprueba = True
                     jugadores += 1
-                    timerBlanco.Enabled = False
-                    timerNegro.Enabled = True
+                    If temporizador Then
+                        timerBlanco.Enabled = False
+                        timerNegro.Enabled = True
+                    End If
                 Else
                     MsgBox("turno de las blancas")
                 End If
@@ -573,8 +581,11 @@
 
                     comprueba = True
                     jugadores += 1
-                    timerNegro.Enabled = False
-                    timerBlanco.Enabled = True
+                    If temporizador Then
+
+                        timerNegro.Enabled = False
+                        timerBlanco.Enabled = True
+                    End If
                 Else
                     MsgBox("turno de las negras")
                 End If

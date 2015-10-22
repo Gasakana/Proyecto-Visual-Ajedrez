@@ -69,9 +69,9 @@ Partial Class frmTablero
         Me.lblBlanco.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblBlanco.Location = New System.Drawing.Point(501, 237)
         Me.lblBlanco.Name = "lblBlanco"
-        Me.lblBlanco.Size = New System.Drawing.Size(46, 22)
+        Me.lblBlanco.Size = New System.Drawing.Size(83, 22)
         Me.lblBlanco.TabIndex = 2
-        Me.lblBlanco.Text = "05:00"
+        Me.lblBlanco.Text = "NO TIME"
         '
         'lblNegro
         '
@@ -79,9 +79,9 @@ Partial Class frmTablero
         Me.lblNegro.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNegro.Location = New System.Drawing.Point(501, 315)
         Me.lblNegro.Name = "lblNegro"
-        Me.lblNegro.Size = New System.Drawing.Size(46, 22)
+        Me.lblNegro.Size = New System.Drawing.Size(83, 22)
         Me.lblNegro.TabIndex = 3
-        Me.lblNegro.Text = "05:00"
+        Me.lblNegro.Text = "NO TIME"
         '
         'lbltblanco
         '

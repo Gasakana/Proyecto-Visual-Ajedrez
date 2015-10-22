@@ -152,6 +152,7 @@ Partial Class frmPromocion
         Me.Controls.Add(Me.rbTorre)
         Me.Controls.Add(Me.pbTorre)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmPromocion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Promoción"

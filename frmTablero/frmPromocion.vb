@@ -1,11 +1,10 @@
 ﻿Public Class frmPromocion
 
-    Dim form As New frmTablero
     Private Sub frmPromocion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
-    Public Sub New(color As String)
+    Public Sub New(ByVal color As String)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
