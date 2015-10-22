@@ -5,6 +5,9 @@
     Dim reyblanco, reynegro, torreblanca1, torreblanca2, torrenegra1, torrenegra2 As Integer
     Dim jugadores As Integer
     Dim nCasillas(7, 7) As String 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
+
+
+
     Dim comprueba As Boolean 'Booleano que comprueba la casilla inicial y la casilla final en la que se encuentra la pieza seleccionada
     Dim ncolumnainicial, nfilainicial, ncolumnafinal, nfilafinal As Integer 'Variables donde se guarda el valor de la fila inicial/final y columna inicial/final
     Dim casillasPB(7, 7) As PictureBox 'Matriz de 8 x 8 de tipo PictureBox para colocar las casillas del tablero
@@ -175,6 +178,11 @@
                 movimientoFicha = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
                 If movimientoFicha = 0 Then
                     If color = "b" Then
+                        If ncolumnainicial = 0 Then
+                            torreblanca1 += 1
+                        ElseIf ncolumnainicial = 7 Then
+                            torreblanca2 += 1
+                        End If
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
@@ -184,6 +192,11 @@
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "bt"
                     ElseIf color = "n" Then
+                        If ncolumnainicial = 0 Then
+                            torrenegra1 += 1
+                        ElseIf ncolumnainicial = 7 Then
+                            torrenegra2 += 1
+                        End If
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
@@ -198,6 +211,7 @@
                 Else
                     MsgBox("movimiento no permitido")
                     jugadores -= 1
+
                 End If
             ElseIf ficha = "p" Then
                 Dim peon As New Peon
@@ -346,50 +360,120 @@
 
             ElseIf ficha = "R" Then
                 Dim rey As New Rey
-                If ncolumnafinal = 1 And nfilafinal = 7 And reyblanco = 0 And torreblanca1 = 0 Then
-                    If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 1, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 2, nfilafinal) = "xx" Then
-                        reyblanco += 1
-                        torreblanca1 += 1
-                        MsgBox("enroque")
-                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
-                        nCasillas(ncolumnafinal, nfilafinal) = "bR"
-                        nCasillas(ncolumnafinal - 1, nfilafinal) = "xx"
-                        casillasPB(ncolumnafinal - 1, nfilafinal).Image = Nothing
-                        nCasillas(ncolumnafinal + 1, nfilafinal) = "bt"
-                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
-                        casillasPB(ncolumnafinal + 1, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
-
-
-
-                    End If
-                End If
-
                 movimientoFicha = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
-                    If movimientoFicha = 0 Then
-
-
-                        If nCasillas(ncolumnainicial, nfilainicial) = "bR" Then
-                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
-                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
-                                MsgBox("Han ganado las blancas")
-                                End
-                            End If
+                If (ncolumnafinal = 2 And nfilafinal = 7) And reyblanco = 0 Then
+                    If torreblanca1 = 0 And nCasillas(ncolumnafinal - 2, nfilafinal) = "bt" Then
+                        MsgBox(reyblanco)
+                        If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 1, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
+                            reyblanco += 1
+                            torreblanca1 += 1
+                            MsgBox("enroque")
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
                             nCasillas(ncolumnafinal, nfilafinal) = "bR"
-                        ElseIf color = "n" Then
-                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
-                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
-                                MsgBox("Han ganado las negras")
-                                End
-                            End If
-                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
-                            nCasillas(ncolumnafinal, nfilafinal) = "nR"
+                            nCasillas(ncolumnafinal - 2, nfilafinal) = "xx"
+                            casillasPB(ncolumnafinal - 2, nfilafinal).Image = Nothing
+                            nCasillas(ncolumnafinal + 1, nfilafinal) = "bt"
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
+                            casillasPB(ncolumnafinal + 1, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
+
                         End If
                     Else
-                        MsgBox("movimiento no permitido")
+                        MsgBox("enroque no permitido")
+                        jugadores -= 1
+
+                    End If
+                ElseIf (ncolumnafinal = 6 And nfilafinal = 7) And reyblanco = 0 Then
+                    MsgBox(reyblanco)
+                    If torreblanca2 = 0 And nCasillas(ncolumnafinal + 1, nfilafinal) = "bt" Then
+                        If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
+                            reyblanco += 1
+                            torreblanca2 += 1
+                            MsgBox("enroque")
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "bR"
+                            nCasillas(ncolumnafinal + 1, nfilafinal) = "xx"
+                            casillasPB(ncolumnafinal + 1, nfilafinal).Image = Nothing
+                            nCasillas(ncolumnafinal - 1, nfilafinal) = "bt"
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
+                            casillasPB(ncolumnafinal - 1, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
+
+                        End If
+                    Else
+                        MsgBox("enroque no permitido")
+                        jugadores -= 1
+                    End If
+
+                ElseIf (ncolumnafinal = 2 And nfilafinal = 0) And reynegro = 0 Then
+                    If torrenegra1 = 0 And nCasillas(ncolumnafinal - 2, nfilafinal) = "nt" Then
+                        If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 1, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
+                            reynegro += 1
+                            torrenegra1 += 1
+                            MsgBox("enroque")
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "nR"
+                            nCasillas(ncolumnafinal - 2, nfilafinal) = "xx"
+                            casillasPB(ncolumnafinal - 2, nfilafinal).Image = Nothing
+                            nCasillas(ncolumnafinal + 1, nfilafinal) = "nt"
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
+                            casillasPB(ncolumnafinal + 1, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
+
+                        End If
+                    Else
+                        MsgBox("enroque no permitido")
+                        jugadores -= 1
+                    End If
+
+                ElseIf (ncolumnafinal = 6 And nfilafinal = 0) And reynegro = 0 Then
+                    If torrenegra2 = 0 And nCasillas(ncolumnafinal + 1, nfilafinal) = "nt" Then
+                        If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
+                            reynegro += 1
+                            torrenegra2 += 1
+                            MsgBox("enroque")
+                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                            nCasillas(ncolumnafinal, nfilafinal) = "nR"
+                            nCasillas(ncolumnafinal + 1, nfilafinal) = "xx"
+                            casillasPB(ncolumnafinal + 1, nfilafinal).Image = Nothing
+                            nCasillas(ncolumnafinal - 1, nfilafinal) = "nt"
+                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
+                            casillasPB(ncolumnafinal - 1, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
+
+                        End If
+                    Else
+                        MsgBox("enroque no permitido")
+                        jugadores -= 1
+                    End If
+
+
+                ElseIf movimientoFicha = 0 Then
+
+
+                    If color = "b" Then
+                        reyblanco += 1
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
+                        If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                            MsgBox("Han ganado las blancas")
+                            End
+                        End If
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                        nCasillas(ncolumnafinal, nfilafinal) = "bR"
+                    ElseIf color = "n" Then
+                        reynegro += 1
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                            MsgBox("Han ganado las negras")
+                            End
+                        End If
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                        nCasillas(ncolumnafinal, nfilafinal) = "nR"
+                    End If
+                Else
+                    MsgBox("movimiento no permitido")
                         jugadores -= 1
                     End If
 
@@ -455,19 +539,25 @@
                     MsgBox("movimiento no permitido")
                     jugadores -= 1
                 End If
+
+            End If
+            If jugadores Mod 2 = 0 Then
+                pbJugador.Load(Application.StartupPath & ("/images/colorB.png"))
+            Else
+                pbJugador.Load(Application.StartupPath & ("/images/colorN.png"))
             End If
 
 
-
-                comprueba = False 'se restablece comprobar a false para el siguiente uso
+            comprueba = False 'se restablece comprobar a false para el siguiente uso
         Else
 
             ncolumnainicial = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna actual donde esta colocada la pieza
             nfilainicial = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila actual donde esta colocada la pieza
             If nCasillas(ncolumnainicial, nfilainicial) = "xx" Then 'si la casilla está vacia...
-                MsgBox("no puedes hacer nada")
+                'MsgBox("no puedes hacer nada")
             ElseIf jugadores Mod 2 = 0 Then
                 If nCasillas(ncolumnainicial, nfilainicial).ToString.Substring(0, 1) = "b" Then
+
                     comprueba = True
                     jugadores += 1
                 Else
@@ -475,6 +565,7 @@
                 End If
             ElseIf jugadores Mod 2 <> 0 Then
                 If nCasillas(ncolumnainicial, nfilainicial).ToString.Substring(0, 1) = "n" Then
+
                     comprueba = True
                     jugadores += 1
                 Else

@@ -12,9 +12,10 @@
 
                     If y = columnaFinal Then
                         If nCasillas(y, filaInicial).Substring(0, 1) <> color And (nCasillas(y, filaInicial).Substring(0, 1) <> "x") Then
+
                             Return 0
+                            End If
                         End If
-                    End If
 
                     If nCasillas(y, filaInicial) <> "xx" Then
                         Return 1
@@ -53,6 +54,7 @@
                 For x = filaInicial + 1 To filaFinal
                     If x = filaFinal Then
                         If nCasillas(columnaInicial, x).Substring(0, 1) <> color And (nCasillas(columnaInicial, x).Substring(0, 1) <> "x") Then
+
                             Return 0
                         End If
                     End If
