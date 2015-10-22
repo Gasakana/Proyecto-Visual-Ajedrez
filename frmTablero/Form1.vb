@@ -1,13 +1,14 @@
 ﻿Public Class frmTablero
 
     'Variables globales
+    Dim minB As Integer = 5
+    Dim minN As Integer = 5
+    Dim segB As Integer = 0
+    Dim segN As Integer = 0
     Public promo As String
     Dim reyblanco, reynegro, torreblanca1, torreblanca2, torrenegra1, torrenegra2 As Integer
     Dim jugadores As Integer
     Dim nCasillas(7, 7) As String 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
-
-
-
     Dim comprueba As Boolean 'Booleano que comprueba la casilla inicial y la casilla final en la que se encuentra la pieza seleccionada
     Dim ncolumnainicial, nfilainicial, ncolumnafinal, nfilafinal As Integer 'Variables donde se guarda el valor de la fila inicial/final y columna inicial/final
     Dim casillasPB(7, 7) As PictureBox 'Matriz de 8 x 8 de tipo PictureBox para colocar las casillas del tablero
@@ -22,7 +23,9 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
+        timerBlanco.Start()
+        timerNegro.Start()
+        timerNegro.Enabled = False
         Dim filas As Integer 'Variable de tipo Integer, el cual se usa para crear el número de filas del tablero
         Dim columnas As Integer 'Variable de tipo Integer, el cual se usa para crear el número de columnas del tablero 
 
@@ -474,45 +477,45 @@
                     End If
                 Else
                     MsgBox("movimiento no permitido")
-                        jugadores -= 1
-                    End If
+                    jugadores -= 1
+                End If
 
 
 
-                ElseIf ficha = "r" Then
-                    Dim reina As New Reina
-                    movimientoFicha = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+            ElseIf ficha = "r" Then
+                Dim reina As New Reina
+                movimientoFicha = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
-                    If movimientoFicha = 0 Then
-                        If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
-                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
-                            If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
-                                MsgBox("Han ganado las blancas")
-                                End
-                            End If
-                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
-                            nCasillas(ncolumnafinal, nfilafinal) = "br"
-                        ElseIf color = "n" Then
-                            casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
-                            casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
-                            If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
-                                MsgBox("Han ganado las negras")
-                                End
-                            End If
-                            nCasillas(ncolumnainicial, nfilainicial) = "xx"
-                            nCasillas(ncolumnafinal, nfilafinal) = "nr"
+                If movimientoFicha = 0 Then
+                    If nCasillas(ncolumnainicial, nfilainicial) = "br" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
+                        If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
+                            MsgBox("Han ganado las blancas")
+                            End
                         End If
-                    Else
-                        MsgBox("movimiento no permitido")
-                        jugadores -= 1
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                        nCasillas(ncolumnafinal, nfilafinal) = "br"
+                    ElseIf color = "n" Then
+                        casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
+                        casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
+                        If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
+                            MsgBox("Han ganado las negras")
+                            End
+                        End If
+                        nCasillas(ncolumnainicial, nfilainicial) = "xx"
+                        nCasillas(ncolumnafinal, nfilafinal) = "nr"
                     End If
+                Else
+                    MsgBox("movimiento no permitido")
+                    jugadores -= 1
+                End If
 
 
 
 
-                ElseIf ficha = "a" Then
-                    Dim alfil As New Alfil
+            ElseIf ficha = "a" Then
+                Dim alfil As New Alfil
                 movimientoFicha = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
 
                 If movimientoFicha = 0 Then
@@ -560,6 +563,8 @@
 
                     comprueba = True
                     jugadores += 1
+                    timerBlanco.Enabled = False
+                    timerNegro.Enabled = True
                 Else
                     MsgBox("turno de las blancas")
                 End If
@@ -568,6 +573,8 @@
 
                     comprueba = True
                     jugadores += 1
+                    timerNegro.Enabled = False
+                    timerBlanco.Enabled = True
                 Else
                     MsgBox("turno de las negras")
                 End If
@@ -575,7 +582,41 @@
 
             End If
         End If
+
     End Sub
+    Private Sub timerBlanco_Tick(sender As Object, e As EventArgs) Handles timerBlanco.Tick
+        If minB > 0 Or segB > 0 Then
+            lblBlanco.Text = minB.ToString.PadLeft(2, "0") & ":" & segB.ToString.PadLeft(2, "0")
+            segB -= 1
+            If segB <= 0 And minB <> 0 Then
+                segB = 59
+                minB -= 1
+            End If
+        Else
+            lblBlanco.Text = minB.ToString.PadLeft(2, "0") & ":" & segB.ToString.PadLeft(2, "0")
+            timerBlanco.Stop()
+            MsgBox("Se acabó el tiempo, Negras ganan")
+
+            End
+        End If
+    End Sub
+
+    Private Sub timerNegro_Tick(sender As Object, e As EventArgs) Handles timerNegro.Tick
+        If minN > 0 Or segN > 0 Then
+            lblNegro.Text = minN.ToString.PadLeft(2, "0") & ":" & segN.ToString.PadLeft(2, "0")
+            segN -= 1
+            If segN < 0 And minN <> 0 Then
+                segN = 59
+                minN -= 1
+            End If
+        Else
+            lblNegro.Text = minN.ToString.PadLeft(2, "0") & ":" & segN.ToString.PadLeft(2, "0")
+            timerNegro.Stop()
+            MsgBox("Se acabó el tiempo, Blancas ganan")
+            End
+        End If
+    End Sub
+
 
 
 
