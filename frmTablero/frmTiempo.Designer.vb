@@ -22,6 +22,7 @@ Partial Class frmTiempo
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTiempo))
         Me.rb5 = New System.Windows.Forms.RadioButton()
         Me.rb0 = New System.Windows.Forms.RadioButton()
         Me.rb20 = New System.Windows.Forms.RadioButton()
@@ -92,6 +93,7 @@ Partial Class frmTiempo
         Me.Controls.Add(Me.rb20)
         Me.Controls.Add(Me.rb10)
         Me.Controls.Add(Me.rb5)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmTiempo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Elija modo de juego"

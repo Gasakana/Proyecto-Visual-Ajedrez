@@ -2,10 +2,7 @@
 
     'Variables globales
     Public temporizador As Boolean
-    Public minB As Integer = 0
-    Public minN As Integer = 0
-    Dim segB As Integer = 0
-    Dim segN As Integer = 0
+    Public minB, minN, segB, segN As Integer
     Public promo As String
     Dim reyblanco, reynegro, torreblanca1, torreblanca2, torrenegra1, torrenegra2 As Integer
     Dim jugadores As Integer
@@ -372,7 +369,6 @@
                 movimientoFicha = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
                 If (ncolumnafinal = 2 And nfilafinal = 7) And reyblanco = 0 Then
                     If torreblanca1 = 0 And nCasillas(ncolumnafinal - 2, nfilafinal) = "bt" Then
-                        MsgBox(reyblanco)
                         If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 1, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
                             reyblanco += 1
                             torreblanca1 += 1
@@ -385,15 +381,14 @@
                             nCasillas(ncolumnafinal + 1, nfilafinal) = "bt"
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
                             casillasPB(ncolumnafinal + 1, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
-
+                        Else
+                            MsgBox("enroque no permitido")
+                            jugadores -= 1
                         End If
-                    Else
-                        MsgBox("enroque no permitido")
-                        jugadores -= 1
+
 
                     End If
                 ElseIf (ncolumnafinal = 6 And nfilafinal = 7) And reyblanco = 0 Then
-                    MsgBox(reyblanco)
                     If torreblanca2 = 0 And nCasillas(ncolumnafinal + 1, nfilafinal) = "bt" Then
                         If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
                             reyblanco += 1
@@ -407,11 +402,11 @@
                             nCasillas(ncolumnafinal - 1, nfilafinal) = "bt"
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
                             casillasPB(ncolumnafinal - 1, nfilafinal).Load(Application.StartupPath & ("/images/torreB.png"))
-
+                        Else
+                            MsgBox("enroque no permitido")
+                            jugadores -= 1
                         End If
-                    Else
-                        MsgBox("enroque no permitido")
-                        jugadores -= 1
+
                     End If
 
                 ElseIf (ncolumnafinal = 2 And nfilafinal = 0) And reynegro = 0 Then
@@ -428,11 +423,11 @@
                             nCasillas(ncolumnafinal + 1, nfilafinal) = "nt"
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
                             casillasPB(ncolumnafinal + 1, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
-
+                        Else
+                            MsgBox("enroque no permitido")
+                            jugadores -= 1
                         End If
-                    Else
-                        MsgBox("enroque no permitido")
-                        jugadores -= 1
+
                     End If
 
                 ElseIf (ncolumnafinal = 6 And nfilafinal = 0) And reynegro = 0 Then
@@ -449,11 +444,11 @@
                             nCasillas(ncolumnafinal - 1, nfilafinal) = "nt"
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyN.png"))
                             casillasPB(ncolumnafinal - 1, nfilafinal).Load(Application.StartupPath & ("/images/torreN.png"))
-
+                        Else
+                            MsgBox("enroque no permitido")
+                            jugadores -= 1
                         End If
-                    Else
-                        MsgBox("enroque no permitido")
-                        jugadores -= 1
+
                     End If
 
 
@@ -552,8 +547,19 @@
             End If
             If jugadores Mod 2 = 0 Then
                 pbJugador.Load(Application.StartupPath & ("/images/colorB.png"))
+                If temporizador Then
+                    timerNegro.Enabled = False
+                    timerBlanco.Enabled = True
+                End If
+
+
             Else
                 pbJugador.Load(Application.StartupPath & ("/images/colorN.png"))
+                If temporizador Then
+                    timerBlanco.Enabled = False
+                    timerNegro.Enabled = True
+                End If
+
             End If
 
 
@@ -569,10 +575,10 @@
 
                     comprueba = True
                     jugadores += 1
-                    If temporizador Then
-                        timerBlanco.Enabled = False
-                        timerNegro.Enabled = True
-                    End If
+                    'If temporizador Then
+                    '    timerBlanco.Enabled = False
+                    '    timerNegro.Enabled = True
+                    'End If
                 Else
                     MsgBox("turno de las blancas")
                 End If
@@ -581,11 +587,11 @@
 
                     comprueba = True
                     jugadores += 1
-                    If temporizador Then
+                    'If temporizador Then
 
-                        timerNegro.Enabled = False
-                        timerBlanco.Enabled = True
-                    End If
+                    '    timerNegro.Enabled = False
+                    '    timerBlanco.Enabled = True
+                    'End If
                 Else
                     MsgBox("turno de las negras")
                 End If
