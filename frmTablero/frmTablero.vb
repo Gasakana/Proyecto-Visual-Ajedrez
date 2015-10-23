@@ -1,4 +1,6 @@
-﻿Public Class frmTablero
+﻿Imports System.ComponentModel
+
+Public Class frmTablero
 
     'Variables globales
     Public temporizador As Boolean
@@ -193,7 +195,8 @@
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                             MsgBox("Han ganado las blancas")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "bt"
@@ -207,7 +210,8 @@
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                             MsgBox("Han ganado las negras")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nt"
@@ -228,7 +232,8 @@
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                             MsgBox("Han ganado las blancas")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "bp"
@@ -237,7 +242,8 @@
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                             MsgBox("Han ganado las negras")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "np"
@@ -253,7 +259,8 @@
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                                 MsgBox("Han ganado las blancas")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
                             nCasillas(ncolumnafinal, nfilafinal) = "bt"
@@ -261,7 +268,8 @@
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
                             If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                                 MsgBox("Han ganado las blancas")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -270,7 +278,8 @@
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
                             If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                                 MsgBox("Han ganado las blancas")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -279,7 +288,8 @@
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
                             If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                                 MsgBox("Han ganado las blancas")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -291,7 +301,8 @@
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                                 MsgBox("Han ganado las negras")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
                             nCasillas(ncolumnafinal, nfilafinal) = "nt"
@@ -299,7 +310,8 @@
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilN.png"))
                             If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                                 MsgBox("Han ganado las negras")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -308,7 +320,8 @@
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoN.png"))
                             If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                                 MsgBox("Han ganado las negras")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -317,7 +330,8 @@
                             casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaN.png"))
                             If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                                 MsgBox("Han ganado las negras")
-                                End
+                                frmMenuPrincipal.Show()
+                                Me.Close()
                             End If
                             casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                             nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -341,7 +355,8 @@
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/caballoB.png"))
                         If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                             MsgBox("Han ganado las blancas")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -351,7 +366,8 @@
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                             MsgBox("Han ganado las negras")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nc"
@@ -460,7 +476,8 @@
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
                         If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                             MsgBox("Han ganado las blancas")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -471,7 +488,8 @@
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                             MsgBox("Han ganado las negras")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nR"
@@ -492,7 +510,8 @@
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reinaB.png"))
                         If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                             MsgBox("Han ganado las blancas")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -502,7 +521,8 @@
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                             MsgBox("Han ganado las negras")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
                         nCasillas(ncolumnafinal, nfilafinal) = "nr"
@@ -524,7 +544,8 @@
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilB.png"))
                         If nCasillas(ncolumnafinal, nfilafinal) = "nR" Then
                             MsgBox("Han ganado las blancas")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -533,7 +554,8 @@
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/alfilN.png"))
                         If nCasillas(ncolumnafinal, nfilafinal) = "bR" Then
                             MsgBox("Han ganado las negras")
-                            End
+                            frmMenuPrincipal.Show()
+                            Me.Close()
                         End If
                         casillasPB(ncolumnainicial, nfilainicial).Image = Nothing
                         nCasillas(ncolumnainicial, nfilainicial) = "xx"
@@ -634,7 +656,18 @@
         End If
     End Sub
 
+    'ESTE ES EL EVENTO QUE HE AÑADIDO, SE EJECUTA CUANDO SE VA A CERRAR EL FORMULARIO
+    'Tambien he añadido que se vaya al formulario del menu en cada momento que va a comer una pieza al rey, eso si funciona
 
+    'Private Sub frmTablero_Closing(sender As Object, e  As CancelEventArgs) Handles Me.Closing
+    '    Dim resp As String
+    '    resp = MsgBox("¿Desea regresar al menú?", MsgBoxStyle.YesNo, "Salir del juego")
+    '    If (resp = 6) Then
+    '        frmMenuPrincipal.Show()
+    '        Me.Close()
+    '    Else
+    '        Me.Show()
+    '    End If
 
-
+    'End Sub
 End Class

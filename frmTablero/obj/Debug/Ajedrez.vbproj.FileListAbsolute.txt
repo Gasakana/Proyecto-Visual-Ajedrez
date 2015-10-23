@@ -81,3 +81,6 @@ C:\Users\Pablo_Cuevas\Documents\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTa
 C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmPromocion.resources
 C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmTiempo.resources
 C:\Users\2DAM\Desktop\ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmTiempo.resources
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmTiempo.resources
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmMenuPrincipal.resources
+C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmSplash.resources
