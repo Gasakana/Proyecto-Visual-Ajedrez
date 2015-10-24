@@ -179,7 +179,7 @@ Public Class frmTablero
 
             Dim color As String = nCasillas(ncolumnainicial, nfilainicial).Substring(0, 1)
             Dim ficha As String = nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1)
-
+            'En lo referente a la torre...
             If ficha = "t" Then
                 Dim torre As New Torre
 
@@ -223,6 +223,7 @@ Public Class frmTablero
                     jugadores -= 1
 
                 End If
+                'En lo referente al peon...
             ElseIf ficha = "p" Then
                 Dim peon As New Peon
                 movimientoFicha = peon.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
@@ -250,6 +251,7 @@ Public Class frmTablero
 
 
                     End If
+                    'Esto solo se da cuando promociona, se contempla que se pueda ganar la partida con el peon a la vez que promociona
                 ElseIf movimientoFicha = 2 Then
                     Dim frmpromo As New frmPromocion(color)
                     frmpromo.ShowDialog()
@@ -343,7 +345,7 @@ Public Class frmTablero
                     MsgBox("movimiento no permitido")
                     jugadores -= 1
                 End If
-
+                'Lo referente al caballo
             ElseIf ficha = "c" Then
                 Dim caballo As New Caballo
                 movimientoFicha = caballo.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
@@ -379,10 +381,11 @@ Public Class frmTablero
 
 
 
-
+                'En lo referente al Rey
             ElseIf ficha = "R" Then
                 Dim rey As New Rey
                 movimientoFicha = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+                'Enroque largo blanco
                 If (ncolumnafinal = 2 And nfilafinal = 7) And reyblanco = 0 Then
                     If torreblanca1 = 0 And nCasillas(ncolumnafinal - 2, nfilafinal) = "bt" Then
                         If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 1, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
@@ -404,6 +407,7 @@ Public Class frmTablero
 
 
                     End If
+                    'Enroque corto blanco
                 ElseIf (ncolumnafinal = 6 And nfilafinal = 7) And reyblanco = 0 Then
                     If torreblanca2 = 0 And nCasillas(ncolumnafinal + 1, nfilafinal) = "bt" Then
                         If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
@@ -424,7 +428,7 @@ Public Class frmTablero
                         End If
 
                     End If
-
+                    'Enroque largo negro
                 ElseIf (ncolumnafinal = 2 And nfilafinal = 0) And reynegro = 0 Then
                     If torrenegra1 = 0 And nCasillas(ncolumnafinal - 2, nfilafinal) = "nt" Then
                         If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal + 1, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
@@ -445,7 +449,7 @@ Public Class frmTablero
                         End If
 
                     End If
-
+                    'Enroque corto negro
                 ElseIf (ncolumnafinal = 6 And nfilafinal = 0) And reynegro = 0 Then
                     If torrenegra2 = 0 And nCasillas(ncolumnafinal + 1, nfilafinal) = "nt" Then
                         If nCasillas(ncolumnafinal, nfilafinal) = "xx" And nCasillas(ncolumnafinal - 1, nfilafinal) = "xx" Then
@@ -470,7 +474,7 @@ Public Class frmTablero
 
                 ElseIf movimientoFicha = 0 Then
 
-
+                    'El movimiento del rey
                     If color = "b" Then
                         reyblanco += 1
                         casillasPB(ncolumnafinal, nfilafinal).Load(Application.StartupPath & ("/images/reyB.png"))
@@ -500,7 +504,7 @@ Public Class frmTablero
                 End If
 
 
-
+                'En referente a la reina
             ElseIf ficha = "r" Then
                 Dim reina As New Reina
                 movimientoFicha = reina.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
@@ -534,7 +538,7 @@ Public Class frmTablero
 
 
 
-
+                'En lo que concierne al alfil
             ElseIf ficha = "a" Then
                 Dim alfil As New Alfil
                 movimientoFicha = alfil.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
@@ -623,6 +627,7 @@ Public Class frmTablero
         End If
 
     End Sub
+    'Gestion de los cronometros de cada jugador, aquel que llegue a 0 le dara la victoria al otro jugador
     Private Sub timerBlanco_Tick(sender As Object, e As EventArgs) Handles timerBlanco.Tick
         If minB > 0 Or segB > 0 Then
             lblBlanco.Text = minB.ToString.PadLeft(2, "0") & ":" & segB.ToString.PadLeft(2, "0")

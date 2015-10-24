@@ -2,9 +2,10 @@
     Dim retorno As Integer = 1
     Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
                           ByVal filaFinal As Integer, ByVal columnaFinal As Integer, ByVal color As String)
-
+        'En caso de que el peon sea blanco
         If color = "b" Then
             If columnaInicial = columnaFinal Then
+                'Movimiento inicial
                 If filaInicial = 6 Then
                     If filaFinal = filaInicial - 2 Then
 
@@ -21,7 +22,7 @@
                     End If
                 End If
             End If
-
+            'Movimiento una vez que ya se ha movido una vez
             If filaFinal = filaInicial - 1 Then
                 If columnaInicial = columnaFinal Then
 
@@ -81,9 +82,10 @@
                 End If
 
             End If
-
+            'En caso de que el peon sea negro
         ElseIf color = "n" Then
             If columnaInicial = columnaFinal Then
+                'Movimiento inicial
                 If filaInicial = 1 Then
                     If filaFinal = filaInicial + 2 Then
 
@@ -103,7 +105,7 @@
                     End If
                 End If
             End If
-
+            'Movimiento una vez que ya se ha movido una vez
             If filaFinal = filaInicial + 1 Then
                 If columnaInicial = columnaFinal Then
 

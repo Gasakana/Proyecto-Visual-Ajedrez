@@ -6,10 +6,8 @@
 
     Public Sub New(ByVal color As String)
 
-        ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        'Comprobamos el color del peon que promociona
         If color = "b" Then
             pbTorre.Load(Application.StartupPath & ("/images/torreB.png"))
             pbCaballo.Load(Application.StartupPath & ("/images/caballoB.png"))
@@ -23,7 +21,7 @@
         End If
 
     End Sub
-
+    'Seleccionamos el tipo de figura que queremos
     Private Sub btnPromocionar_Click(sender As Object, e As EventArgs) Handles btnPromocionar.Click
         If rbTorre.Checked Then
             frmTablero.promo = "torre"
