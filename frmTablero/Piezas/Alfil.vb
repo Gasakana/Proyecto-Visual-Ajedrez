@@ -1,9 +1,9 @@
 ﻿Public Class Alfil
-    Dim retorno As Integer = 1 'variable que indica si el movimiento es posible o no solo cuando
+    Dim retorno As Integer = 1 'Variable que indica si el movimiento es posible o no, solo cuando
     'es 0 el movimiento se realiza
 
-    'Metodo que comprueba la ruta entre la posicion inicial y la final en caso de haber un
-    'obstáculo devolvera 1 y no permitira el movimiento. Tambien controla si puede comerse
+    'Método que comprueba la ruta entre la posicion inicial y la final en caso de haber un
+    'obstáculo devolverá 1 y no permitirá el movimiento. También controla si puede comerse
     'una pieza
     Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
                           ByVal filaFinal As Integer, ByVal columnaFinal As Integer, ByVal color As String)
@@ -88,7 +88,6 @@
 
             End While
         End If
-
 
         Return retorno
 

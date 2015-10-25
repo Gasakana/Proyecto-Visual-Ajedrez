@@ -32,25 +32,27 @@ Partial Class frmTablero
         Me.lblNegro = New System.Windows.Forms.Label()
         Me.lbltblanco = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.pbCerrar = New System.Windows.Forms.PictureBox()
         CType(Me.pbJugador, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbCerrar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblJugador
         '
         Me.lblJugador.AutoSize = True
-        Me.lblJugador.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblJugador.Location = New System.Drawing.Point(501, 44)
+        Me.lblJugador.Font = New System.Drawing.Font("Palatino Linotype", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.lblJugador.Location = New System.Drawing.Point(661, 38)
         Me.lblJugador.Name = "lblJugador"
-        Me.lblJugador.Size = New System.Drawing.Size(90, 22)
+        Me.lblJugador.Size = New System.Drawing.Size(139, 32)
         Me.lblJugador.TabIndex = 0
         Me.lblJugador.Text = "JUGADOR"
         '
         'pbJugador
         '
         Me.pbJugador.Image = Global.Ajedrez.My.Resources.Resources.colorB
-        Me.pbJugador.Location = New System.Drawing.Point(498, 82)
+        Me.pbJugador.Location = New System.Drawing.Point(655, 83)
         Me.pbJugador.Name = "pbJugador"
-        Me.pbJugador.Size = New System.Drawing.Size(98, 101)
+        Me.pbJugador.Size = New System.Drawing.Size(148, 153)
         Me.pbJugador.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbJugador.TabIndex = 1
         Me.pbJugador.TabStop = False
@@ -66,48 +68,60 @@ Partial Class frmTablero
         'lblBlanco
         '
         Me.lblBlanco.AutoSize = True
-        Me.lblBlanco.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBlanco.Location = New System.Drawing.Point(501, 237)
+        Me.lblBlanco.Font = New System.Drawing.Font("Palatino Linotype", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.lblBlanco.Location = New System.Drawing.Point(681, 298)
         Me.lblBlanco.Name = "lblBlanco"
-        Me.lblBlanco.Size = New System.Drawing.Size(83, 22)
+        Me.lblBlanco.Size = New System.Drawing.Size(113, 29)
         Me.lblBlanco.TabIndex = 2
         Me.lblBlanco.Text = "NO TIME"
         '
         'lblNegro
         '
         Me.lblNegro.AutoSize = True
-        Me.lblNegro.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNegro.Location = New System.Drawing.Point(501, 315)
+        Me.lblNegro.Font = New System.Drawing.Font("Palatino Linotype", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.lblNegro.Location = New System.Drawing.Point(681, 408)
         Me.lblNegro.Name = "lblNegro"
-        Me.lblNegro.Size = New System.Drawing.Size(83, 22)
+        Me.lblNegro.Size = New System.Drawing.Size(113, 29)
         Me.lblNegro.TabIndex = 3
         Me.lblNegro.Text = "NO TIME"
         '
         'lbltblanco
         '
         Me.lbltblanco.AutoSize = True
-        Me.lbltblanco.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbltblanco.Location = New System.Drawing.Point(501, 215)
+        Me.lbltblanco.Font = New System.Drawing.Font("Palatino Linotype", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.lbltblanco.Location = New System.Drawing.Point(681, 270)
         Me.lbltblanco.Name = "lbltblanco"
-        Me.lbltblanco.Size = New System.Drawing.Size(60, 22)
+        Me.lbltblanco.Size = New System.Drawing.Size(82, 29)
         Me.lbltblanco.TabIndex = 4
         Me.lbltblanco.Text = "Blanco"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(501, 293)
+        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 16.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New System.Drawing.Point(681, 378)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 22)
+        Me.Label1.Size = New System.Drawing.Size(75, 29)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Negro"
+        '
+        'pbCerrar
+        '
+        Me.pbCerrar.Image = CType(resources.GetObject("pbCerrar.Image"), System.Drawing.Image)
+        Me.pbCerrar.Location = New System.Drawing.Point(673, 486)
+        Me.pbCerrar.Name = "pbCerrar"
+        Me.pbCerrar.Size = New System.Drawing.Size(105, 106)
+        Me.pbCerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pbCerrar.TabIndex = 6
+        Me.pbCerrar.TabStop = False
         '
         'frmTablero
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(608, 477)
+        Me.ClientSize = New System.Drawing.Size(826, 640)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.pbCerrar)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lbltblanco)
         Me.Controls.Add(Me.lblNegro)
@@ -116,10 +130,12 @@ Partial Class frmTablero
         Me.Controls.Add(Me.lblJugador)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "frmTablero"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ajedrez"
         CType(Me.pbJugador, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbCerrar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -133,4 +149,5 @@ Partial Class frmTablero
     Friend WithEvents lblNegro As Label
     Friend WithEvents lbltblanco As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents pbCerrar As PictureBox
 End Class

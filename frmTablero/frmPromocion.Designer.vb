@@ -22,6 +22,7 @@ Partial Class frmPromocion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPromocion))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pbTorre = New System.Windows.Forms.PictureBox()
         Me.rbTorre = New System.Windows.Forms.RadioButton()
@@ -153,6 +154,7 @@ Partial Class frmPromocion
         Me.Controls.Add(Me.pbTorre)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmPromocion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Promoción"

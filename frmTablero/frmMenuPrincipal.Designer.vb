@@ -33,9 +33,10 @@ Partial Class frmMenuPrincipal
         '
         Me.pbJugar.BackColor = System.Drawing.Color.Transparent
         Me.pbJugar.BackgroundImage = CType(resources.GetObject("pbJugar.BackgroundImage"), System.Drawing.Image)
-        Me.pbJugar.Location = New System.Drawing.Point(449, 218)
+        Me.pbJugar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbJugar.Location = New System.Drawing.Point(298, 185)
         Me.pbJugar.Name = "pbJugar"
-        Me.pbJugar.Size = New System.Drawing.Size(278, 75)
+        Me.pbJugar.Size = New System.Drawing.Size(218, 51)
         Me.pbJugar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbJugar.TabIndex = 2
         Me.pbJugar.TabStop = False
@@ -44,9 +45,10 @@ Partial Class frmMenuPrincipal
         '
         Me.pbSalir.BackColor = System.Drawing.Color.Transparent
         Me.pbSalir.BackgroundImage = CType(resources.GetObject("pbSalir.BackgroundImage"), System.Drawing.Image)
-        Me.pbSalir.Location = New System.Drawing.Point(449, 368)
+        Me.pbSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.pbSalir.Location = New System.Drawing.Point(298, 294)
         Me.pbSalir.Name = "pbSalir"
-        Me.pbSalir.Size = New System.Drawing.Size(278, 75)
+        Me.pbSalir.Size = New System.Drawing.Size(218, 51)
         Me.pbSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pbSalir.TabIndex = 3
         Me.pbSalir.TabStop = False
@@ -57,12 +59,13 @@ Partial Class frmMenuPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(797, 598)
+        Me.ClientSize = New System.Drawing.Size(563, 479)
         Me.ControlBox = False
         Me.Controls.Add(Me.pbSalir)
         Me.Controls.Add(Me.pbJugar)
         Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMenuPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"

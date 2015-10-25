@@ -1,9 +1,9 @@
 ﻿Public Class Torre
-    Dim retorno As Integer = 1 'variable que indica si el movimiento es posible o no solo cuando
+    Dim retorno As Integer = 1 'Variable que indica si el movimiento es posible o no, solo cuando
     'es 0 el movimiento se realiza
 
-    'Metodo que comprueba la ruta entre la posicion inicial y la final en caso de haber un
-    'obstáculo devolvera 1 y no permitira el movimiento. Tambien controla si puede comerse
+    'Método que comprueba la ruta entre la posición inicial y la final en caso de haber un
+    'obstáculo devolverá 1 y no permitirá el movimiento. También controla si puede comerse
     'una pieza
     Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
                           ByVal filaFinal As Integer, ByVal columnaFinal As Integer, ByVal color As String)
@@ -11,7 +11,7 @@
 
         'Es horizontal
         If filaInicial = filaFinal Then
-            ' --------->
+            ' Hacia la derecha
             If columnaFinal > columnaInicial Then
                 For y = columnaInicial + 1 To columnaFinal
 
@@ -19,8 +19,8 @@
                         If nCasillas(y, filaInicial).Substring(0, 1) <> color And (nCasillas(y, filaInicial).Substring(0, 1) <> "x") Then
 
                             Return 0
-                            End If
                         End If
+                    End If
 
                     If nCasillas(y, filaInicial) <> "xx" Then
                         Return 1
@@ -31,7 +31,8 @@
                         retorno = 0
                     End If
                 Next
-                '<----------
+
+                'Hacia la izquierda
             ElseIf columnaFinal < columnaInicial
                 For y = columnaInicial - 1 To columnaFinal Step -1
                     If y = columnaFinal Then
@@ -54,7 +55,7 @@
 
         'Vertical
         If columnaInicial = columnaFinal Then
-            ' abajo
+            ' Hacia abajo
             If filaFinal > filaInicial Then
                 For x = filaInicial + 1 To filaFinal
                     If x = filaFinal Then
@@ -71,7 +72,8 @@
                         retorno = 0
                     End If
                 Next
-                'arriba
+
+                'Hacia arriba
             ElseIf filaFinal < filaInicial
                 For x = filaInicial - 1 To filaFinal Step -1
                     If x = filaFinal Then
@@ -90,6 +92,7 @@
                 Next
             End If
         End If
+
         Return retorno
 
     End Function

@@ -1,5 +1,5 @@
 ﻿Public Class frmPromocion
-    'Formulario que se llama cuando un peon llega al otro extremo del tablero se le pasa la variable
+    'Formulario que se llama cuando un peon llega al otro extremo del tablero, se le pasa la variable
     'color que solo puede dar dos valores
     Public Sub New(ByVal color As String)
 
@@ -19,7 +19,7 @@
 
     End Sub
     'Seleccionamos el tipo de figura que queremos con radio button
-    'La variable promo del tablero es publica y es la que utilizamos para decirle a que promocionar
+    'La variable promo del tablero es pública y es la que utilizamos para decirle a que promocionar
     Private Sub btnPromocionar_Click(sender As Object, e As EventArgs) Handles btnPromocionar.Click
         If rbTorre.Checked Then
             frmTablero.promo = "torre"
