@@ -2,18 +2,16 @@
 
 Public Class frmTablero
 
-    'Variables globales
-    Public temporizador As Boolean
-    Public minB, minN, segB, segN As Integer
-    Public promo As String
-    Dim reyblanco, reynegro, torreblanca1, torreblanca2, torrenegra1, torrenegra2 As Integer
-    Dim jugadores As Integer
-    Dim nCasillas(7, 7) As String 'Matriz de 8 x 8 de tipo Integer para comprobar los movimientos de las piezas
-    Dim comprueba As Boolean 'Booleano que comprueba la casilla inicial y la casilla final en la que se encuentra la pieza seleccionada
+    'Variables globales, las que son publicas son accedidas por otros formularios
+    Public temporizador As Boolean 'variable booleana que comprueba si el juego tendra temporizador o no
+    Public minB, minN, segB, segN As Integer 'variables utilizadas para los minutos y segundos del temporizador de cada jugador
+    Public promo As String 'variable utilizada para que en caso de promocion se determine a que pieza promociona el peón
+    Dim reyblanco, reynegro, torreblanca1, torreblanca2, torrenegra1, torrenegra2 As Integer 'variables que determinan si las piezas que son necesarias para el enroque se han movido con anterioridad
+    Dim jugadores As Integer 'variable que determina que jugador juega dependiendo de si es par o impar sera el turno de un jugador u otro
+    Dim nCasillas(7, 7) As String 'Matriz de 8 x 8 de tipo String para comprobar los movimientos de las piezas los valores estan compuestos de color y tipo de pieza o xx en caso de no haber pieza
+    Dim comprueba As Boolean 'Booleano que comprueba si el metodo click del tablero se refiere a la posicion inicial o a la final
     Dim ncolumnainicial, nfilainicial, ncolumnafinal, nfilafinal As Integer 'Variables donde se guarda el valor de la fila inicial/final y columna inicial/final
     Dim casillasPB(7, 7) As PictureBox 'Matriz de 8 x 8 de tipo PictureBox para colocar las casillas del tablero
-
-
 
 
     'Metodos/Eventos
@@ -22,7 +20,7 @@ Public Class frmTablero
     'y con las piezas de ambos jugadores colocadas
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'comprueba que modo de juego se ha elegido utilizando el valor de temporizador que le pasa frmTiempo
         If temporizador Then
             lblBlanco.Text = minB.ToString.PadLeft(2, "0") & ":00"
             lblNegro.Text = minN.ToString.PadLeft(2, "0") & ":00"
@@ -165,23 +163,25 @@ Public Class frmTablero
         Next
     End Sub
 
-    'Método a ejecutar en el manejador
+    'Método a ejecutar en el manejador dependiendo donde hagas click podras o no mover una pieza
     Private Sub moverFicha(sender As Object, e As EventArgs)
 
 
-        If (comprueba) Then 'usando este boolean utilizamos el mismo metodo para la inicial y la final
+        If (comprueba) Then 'usando este boolean comprobamos si se seleccionas la pieza por primera vez o si vas a intentar
+            'mover una pieza ya seleccionada
 
-            Dim movimientoFicha As Integer
+            Dim movimientoFicha As Integer 'variable Integer que determinara si el movimiento es posible o no. Su valor puede ser 0,1 y 2(solo en caso del peon)
+            'dependiendo de la variable ficha guarda el resultado del metodo mover de la clase pieza correspondiente
 
             ncolumnafinal = CInt(sender.name.ToString.Substring(0, 1)) 'extraemos la columna final en la que se va a colocar la pieza
             nfilafinal = CInt(sender.name.ToString.Substring(1, 1)) 'extraemos la fila final en la que se va a colocar la pieza
 
 
-            Dim color As String = nCasillas(ncolumnainicial, nfilainicial).Substring(0, 1)
-            Dim ficha As String = nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1)
+            Dim color As String = nCasillas(ncolumnainicial, nfilainicial).Substring(0, 1) 'variable que sirve para comprobar si es blanca o negra la pieza de no haber nada es x
+            Dim ficha As String = nCasillas(ncolumnainicial, nfilainicial).Substring(1, 1) 'variable que sirve para comprobar el tipo de pieza de no haber nada es x
             'En lo referente a la torre...
             If ficha = "t" Then
-                Dim torre As New Torre
+                Dim torre As New Torre '
 
                 movimientoFicha = torre.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
                 If movimientoFicha = 0 Then
@@ -385,6 +385,10 @@ Public Class frmTablero
             ElseIf ficha = "R" Then
                 Dim rey As New Rey
                 movimientoFicha = rey.mover(nCasillas, nfilainicial, ncolumnainicial, nfilafinal, ncolumnafinal, color)
+
+                'Para realizar el enroque habrá que decirle al rey que se mueva dos pasos a la izquierda o derecha de su posicion inicial
+                'Comprobamos si se cumplen todas las condiciones para que se pueda realizar, tanto si se puede realizar como si no mostrará un mensaje
+
                 'Enroque largo blanco
                 If (ncolumnafinal = 2 And nfilafinal = 7) And reyblanco = 0 Then
                     If torreblanca1 = 0 And nCasillas(ncolumnafinal - 2, nfilafinal) = "bt" Then
@@ -601,10 +605,6 @@ Public Class frmTablero
 
                     comprueba = True
                     jugadores += 1
-                    'If temporizador Then
-                    '    timerBlanco.Enabled = False
-                    '    timerNegro.Enabled = True
-                    'End If
                 Else
                     MsgBox("turno de las blancas")
                 End If
@@ -613,11 +613,6 @@ Public Class frmTablero
 
                     comprueba = True
                     jugadores += 1
-                    'If temporizador Then
-
-                    '    timerNegro.Enabled = False
-                    '    timerBlanco.Enabled = True
-                    'End If
                 Else
                     MsgBox("turno de las negras")
                 End If
@@ -660,19 +655,4 @@ Public Class frmTablero
             End
         End If
     End Sub
-
-    'ESTE ES EL EVENTO QUE HE AÑADIDO, SE EJECUTA CUANDO SE VA A CERRAR EL FORMULARIO
-    'Tambien he añadido que se vaya al formulario del menu en cada momento que va a comer una pieza al rey, eso si funciona
-
-    'Private Sub frmTablero_Closing(sender As Object, e  As CancelEventArgs) Handles Me.Closing
-    '    Dim resp As String
-    '    resp = MsgBox("¿Desea regresar al menú?", MsgBoxStyle.YesNo, "Salir del juego")
-    '    If (resp = 6) Then
-    '        frmMenuPrincipal.Show()
-    '        Me.Close()
-    '    Else
-    '        Me.Show()
-    '    End If
-
-    'End Sub
 End Class

@@ -1,5 +1,7 @@
 ﻿Public Class Caballo
 
+    'Metodo que comprueba si la posicion final del caballo es una de las posibles que puede hacer
+    'este devolviendo 1 en caso de no poder o de estar ocupada por una pieza del mismo color
     Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
                           ByVal filaFinal As Integer, ByVal columnaFinal As Integer, ByVal color As String)
         'Dos casillas a la derecha, una arriba

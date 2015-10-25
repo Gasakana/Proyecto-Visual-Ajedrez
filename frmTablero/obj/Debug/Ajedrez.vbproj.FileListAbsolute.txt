@@ -87,3 +87,5 @@ C:\Users\Gasakana\Documents\GitHub\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\
 C:\Users\pj_cu\OneDrive\Documentos\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\bin\Debug\Ajedrez.exe.config
 C:\Users\pj_cu\OneDrive\Documentos\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.exe
 C:\Users\pj_cu\OneDrive\Documentos\GitHubVisualStudio\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.xml
+C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmMenuPrincipal.resources
+C:\Users\Eduardo\Desktop\Ajedrez\Proyecto-Visual-Ajedrez\frmTablero\obj\Debug\Ajedrez.frmSplash.resources

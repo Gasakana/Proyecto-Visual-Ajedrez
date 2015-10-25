@@ -1,5 +1,11 @@
 ﻿Public Class Peon
-    Dim retorno As Integer = 1
+    Dim retorno As Integer = 1 'variable que indica si el movimiento es posible o no solo cuando
+    'en el caso del peon es diferente al resto ya que aparte del 0 para permitir el movimiento
+    'tambien comprueba si es 2 en caso de llegar a un extremo y promocionar
+
+    'Metodo que comprueba la ruta entre la posicion inicial y la final en caso de haber un
+    'obstáculo devolvera 1 y no permitira el movimiento. Tambien controla si puede comerse
+    'una pieza y la promoción
     Public Function mover(ByVal nCasillas(,) As String, ByVal filaInicial As Integer, ByVal columnaInicial As Integer,
                           ByVal filaFinal As Integer, ByVal columnaFinal As Integer, ByVal color As String)
         'En caso de que el peon sea blanco
